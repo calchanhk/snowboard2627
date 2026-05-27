@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冬日日本滑雪假期 2026-2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush:   #fdf0f5;
+  --petal:   #f5d8e8;
+  --sky:     #deeef8;
+  --lav:     #ede8f8;
+  --mint:    #e4f4ee;
+  --cream:   #fffaf6;
+  --rose:    #d4789a;
+  --blue:    #7aaacf;
+  --lilac:   #9f8fc8;
+  --text:    #5a3d50;
+  --tmid:    #8a6a7a;
+  --tlt:     #b8a0b0;
+  --cedar:   #9a607a;
+  --accent:  #c86888;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ── (i) 全網頁密碼鎖密閉遮罩 ── */
+#passGate {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: linear-gradient(135deg, #deeef8 0%, #fffbfd 100%);
+  z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2rem; transition: opacity 0.4s ease;
+}
+.gate-box {
+  background: white; padding: 2.5rem; border-radius: 24px; text-align: center;
+  box-shadow: 0 10px 40px rgba(90,61,80,0.1); border: 1px solid var(--petal); max-width: 380px; width: 100%;
+}
+.gate-box h2 { font-family: 'Shippori Mincho', serif; font-size: 1.4rem; color: var(--cedar); margin-bottom: 0.5rem; }
+.gate-box p { font-size: 0.78rem; color: var(--tmid); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+.gate-box input { width: 100%; padding: 0.75rem 1.2rem; border-radius: 30px; border: 1.5px solid var(--petal); outline: none; font-size: 0.95rem; text-align: center; margin-bottom: 1rem; color: var(--text); background: #fffbfd; }
+.gate-box input:focus { border-color: var(--rose); background: white; }
+.gate-box button { width: 100%; padding: 0.75rem; border-radius: 30px; border: none; background: linear-gradient(135deg, var(--accent), var(--rose)); color: white; font-family: 'Shippori Mincho', serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 12px rgba(200,104,136,0.25); }
+.gate-box button:hover { transform: translateY(-1px); }
+.gate-err { color: #d9534f; font-size: 0.75rem; margin-top: 0.5rem; display: none; font-family: 'Shippori Mincho', serif; }
+
+/* ── 飄雪特效 ── */
+.petal{position:fixed;top:-20px;pointer-events:none;z-index:200;opacity:0;color:rgba(210,120,154,0.4);animation:pfall linear infinite;}
+@keyframes pfall{0%{transform:translateY(0) rotate(0) translateX(0);opacity:0}8%{opacity:1}50%{transform:translateY(50vh) rotate(180deg) translateX(14px)}92%{opacity:.4}100%{transform:translateY(105vh) rotate(360deg) translateX(-8px);opacity:0}}
+
+/* ── 視覺大圖 ── */
+.hero{
+  position:relative;width:100%;min-height:540px;max-height:800px;height:88vh;
+  overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-flex-end;
+  background:linear-gradient(180deg, #c8dff5 0%, #deeef8 28%, #edf6ff 48%, #f8f0f5 68%, #fdf5f0 100%);
+}
+.hero::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:62%;
+  clip-path:polygon(0% 100%,0% 55%,5% 38%,10% 55%,15% 28%,22% 52%,28% 18%,35% 46%,42% 12%,50% 40%,57% 16%,64% 44%,70% 22%,78% 50%,83% 30%,88% 52%,93% 35%,100% 55%,100% 100%);
+  background:linear-gradient(180deg,#c0d8f0 0%,#b8cce0 40%,#a8b8ce 100%);
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:48%;
+  clip-path:polygon(0% 100%,0% 60%,4% 42%,9% 62%,14% 34%,20% 58%,26% 26%,33% 52%,40% 20%,47% 48%,54% 24%,61% 50%,67% 30%,74% 56%,80% 36%,87% 58%,93% 38%,100% 56%,100% 100%);
+  background:linear-gradient(180deg,#e0eef8 0%,#d0e0f0 30%,#b8cce0 100%);
+}
+.hero-ground{position:absolute;bottom:0;left:0;right:0;height:22%;background:linear-gradient(180deg,#f8f4ff 0%,#f0ecf8 50%,#e8e0f0 100%);clip-path:ellipse(65% 100% at 50% 100%);}
+.hero-content{position:relative;z-index:5;text-align:center;padding:2rem 1.5rem 3rem;width:100%;}
+.hero-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);border:1px solid rgba(200,104,136,0.2);border-radius:30px;padding:.3rem 1.1rem;font-size:.68rem;color:var(--cedar);letter-spacing:.25em;margin-bottom:.9rem;font-family:'Shippori Mincho',serif;}
+.hero h1{font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(2rem,7vw,3.6rem);color:var(--text);letter-spacing:.1em;line-height:1.1;text-shadow:0 2px 20px rgba(255,255,255,.95);}
+.hero h1 em{display:block;font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:.46em;color:var(--cedar);letter-spacing:.2em;margin-top:.4rem;}
+.hero-sub{margin-top:.7rem;font-size:.78rem;color:var(--tmid);letter-spacing:.18em;font-family:'Shippori Mincho',serif;}
+
+/* ── 特色橫條 ── */
+.istrip{display:flex;background:white;border-top:2px solid var(--petal);border-bottom:2px solid var(--petal);overflow-x:auto;scrollbar-width:none;}
+.istrip::-webkit-scrollbar{display:none;}
+.iitem{flex:1;min-width:120px;padding:1rem .5rem;text-align:center;border-right:1px solid var(--petal);cursor:default;transition:background .2s;}
+.iitem:last-child{border-right:none;}
+.iitem:hover{background:var(--blush);}
+.iitem-icon{font-size:1.5rem;display:block;margin-bottom:.35rem;}
+.iitem-text{font-size:.65rem;color:var(--tmid);letter-spacing:.1em;font-family:'Shippori Mincho',serif;}
+
+/* ── 內容容器 ── */
+.wrap{max-width:860px;margin:0 auto;padding:2.5rem 1.2rem 5rem;}
+
+/* ── 區塊標題 ── */
+.sh{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;}
+.sh-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.sh-title{font-family:'Shippori Mincho',serif;font-weight:700;font-size:.95rem;letter-spacing:.1em;color:var(--cedar);}
+.sh-sub{display:block;font-size:.6rem;letter-spacing:.22em;color:var(--tlt);font-weight:400;margin-top:1px;text-transform:uppercase;}
+.sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--petal),transparent);}
+
+/* ── 卡片樣式 ── */
+.card{background:white;border-radius:18px;padding:1.8rem;margin-bottom:1.8rem;border:1px solid rgba(200,104,136,.1);box-shadow:0 4px 20px rgba(90,61,80,.05);position:relative;overflow:hidden;}
+
+/* ── 滑雪相簿 ── */
+.romantic-gallery {display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 2.5rem;}
+.gallery-img {width: 100%; height: 260px; object-fit: cover; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); background-color: #eef5ff;}
+.gallery-sub-grid {display: grid; grid-template-rows: 1fr 1fr; gap: 12px;}
+.gallery-img-sub {width: 100%; height: 124px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); background-color: #eef5ff;}
+
+/* ── 旅伴成員與真實頭像 ── */
+.f-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;}
+@media(min-width:480px){.f-grid{grid-template-columns:repeat(4,1fr);}}
+.f-card{border-radius:14px;padding:1.1rem .7rem .9rem;text-align:center;cursor:pointer;border:2.5px solid transparent;transition:all .2s ease;position:relative;}
+.f-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.06);}
+.f-card.me{border-color:var(--accent)!important;box-shadow:0 0 0 4px rgba(200,104,136,.1),0 6px 20px rgba(200,104,136,.15);transform:translateY(-4px);}
+.you{position:absolute;top:7px;right:7px;background:var(--accent);color:white;font-size:.5rem;padding:.12rem .4rem;border-radius:10px;letter-spacing:.08em;font-family:'Shippori Mincho',serif;}
+
+/* 頭像相片樣式 */
+.f-ava{width:54px;height:54px;border-radius:50%;margin:0 auto .5rem;box-shadow:0 3px 10px rgba(0,0,0,.12);overflow:hidden;border:2px solid white;display:flex;align-items:center;justify-content:center;}
+.f-ava img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.f-name{font-family:'Shippori Mincho',serif;font-weight:700;font-size:.92rem;color:var(--text);letter-spacing:.04em;}
+.f-dates{font-size:.58rem;color:var(--tmid);margin-top:.3rem;line-height:1.6;white-space:pre-line;min-height:1em;}
+.remake-btn {margin-top: 8px; font-size: 0.6rem; padding: 2px 8px; border: 1px solid rgba(200,104,136,0.15); background: rgba(255,255,255,0.7); border-radius: 10px; color: var(--tmid); cursor: pointer; transition: all 0.15s;}
+.remake-btn:hover { background: white; color: var(--accent); border-color: var(--accent); }
+
+/* ── 雪場投票統計圖表樣式 ── */
+.poll-list { display: flex; flex-direction: column; gap: 0.9rem; }
+.poll-item { background: #fffbfd; border: 1px solid var(--petal); border-radius: 14px; padding: 1rem 1.2rem; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; }
+.poll-item:hover { border-color: var(--rose); background: #fdf5f8; transform: translateY(-1px); }
+.poll-item.voted { border-color: var(--accent); background: linear-gradient(90deg, #fff2f6, white); box-shadow: 0 2px 10px rgba(200,104,136,0.06); }
+.poll-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; position: relative; z-index: 2; }
+.poll-name { font-family: 'Shippori Mincho', serif; font-weight: 700; font-size: 0.92rem; color: var(--cedar); }
+.poll-count { font-size: 0.75rem; color: var(--tmid); font-weight: 500; }
+.poll-track { height: 6px; background: #eef3f8; border-radius: 3px; position: relative; overflow: hidden; z-index: 2; }
+.poll-fill { height: 100%; background: linear-gradient(90deg, var(--petal), var(--rose)); border-radius: 3px; width: 0%; transition: width 0.4s cubic-bezier(0.1, 0.8, 0.3, 1); }
+.poll-item.voted .poll-fill { background: linear-gradient(90deg, #e4c5d8, var(--accent)); }
+.poll-voters { font-size: 0.65rem; color: var(--tlt); margin-top: 0.3rem; line-height: 1.4; position: relative; z-index: 2; }
+
+/* ── 行事曆 ── */
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;}
+.cal-jp{font-family:'Shippori Mincho',serif;font-size:1.25rem;font-weight:700;color:var(--cedar);letter-spacing:.08em;text-align:center;}
+.cal-en{font-size:.6rem;color:var(--tlt);letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-top:2px;}
+.nbtn{width:33px;height:33px;border-radius:50%;border:1.5px solid var(--petal);background:white;cursor:pointer;font-size:.8rem;color:var(--cedar);display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.nbtn:hover{background:var(--blush);border-color:var(--rose);}
+.wd-row{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;}
+.wd{text-align:center;font-size:.62rem;font-family:'Shippori Mincho',serif;letter-spacing:.06em;color:var(--tlt);padding:.25rem 0;}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.day{aspect-ratio:1;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;background:#fdf5f8;border:1.5px solid #f0e4ea;transition:all .12s ease;min-height:38px;user-select:none;}
+.day:hover:not(.empty):not(.past){border-color:var(--rose);background:var(--blush);transform:scale(1.06);z-index:2;}
+.day.empty{background:transparent;border-color:transparent;cursor:default;}
+.day.past{opacity:.28;cursor:not-allowed;}
+.day.today .dn{background:var(--accent);color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
+.dn{font-size:.77rem;font-family:'Shippori Mincho',serif;font-weight:600;color:var(--text);line-height:1;}
+.day.h1{background:#fff0f5;border-color:#f8d0e0;}
+.day.h2{background:#fcdde8;border-color:#f0b0c8;}
+.day.h3{background:#f8c0d4;border-color:#e090b8;}
+.day.h4{background:#f0a0c0;border-color:#d070a0;}
+.day.h5{background:#e888b0;border-color:#c05890;}
+.day.mine{outline:2.5px solid var(--blue);outline-offset:1px;}
+.day.dpv-add{background:#ddf0e8!important;border-color:#88c8a8!important;transform:scale(1.05);}
+.day.dpv-rm{background:#fde8ee!important;border-color:#e8a8b8!important;opacity:.7;}
+.fdots{display:flex;gap:2px;justify-content:center;margin-top:2px;flex-wrap:wrap;padding:0 2px;}
+.fdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.cal-leg{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--sky);}
+.leg{display:flex;align-items:center;gap:.3rem;font-size:.67rem;color:var(--tmid);}
+.lb{width:13px;height:13px;border-radius:3px;border:1.5px solid transparent;}
+
+/* ── 最佳日期推薦 ── */
+.blist{display:flex;flex-direction:column;gap:.7rem;}
+.bitem{display:flex;gap:.9rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:12px;border:1px solid rgba(200,104,136,.13);background:linear-gradient(135deg,#fff0f6,white);}
+.brank{font-family:'Playfair Display',serif;font-style:italic;font-size:1.5rem;min-width:1.8rem;text-align:center;line-height:1;margin-top:2px;color:var(--accent);}
+.blabel{font-family:'Shippori Mincho',serif;font-weight:700;font-size:1rem;color:var(--cedar);line-height:1.3;}
+.bwho{font-size:.72rem;color:var(--tmid);margin-top:.3rem;line-height:1.7;}
+.bbar-wrap{display:flex;align-items:center;gap:.5rem;margin-top:.4rem;}
+.bbar-track{flex:1;height:5px;background:var(--sky);border-radius:3px;overflow:hidden;}
+.bbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--petal),var(--rose));}
+.bpct{font-size:.67rem;color:var(--tlt);min-width:2.8rem;text-align:right;}
+.empty-s{text-align:center;color:var(--tlt);font-size:.83rem;padding:1.5rem;font-style:italic;font-family:'Shippori Mincho',serif;}
+
+.brow{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;}
+.btn{padding:.5rem 1.2rem;border-radius:30px;border:none;font-family:'Shippori Mincho',serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .18s;}
+.btn-g{background:white;color:var(--cedar);border:1.5px solid var(--petal);}
+.btn-g:hover{background:var(--blush);}
+
+/* ── 提示彈窗 ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,var(--accent),var(--rose));color:white;padding:.65rem 1.5rem;border-radius:30px;font-family:'Shippori Mincho',serif;font-size:.82rem;letter-spacing:.05em;box-shadow:0 4px 20px rgba(200,104,136,.3);transition:transform .3s ease;z-index:999999;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:480px){
+  .day{min-height:34px;border-radius:6px;}.dn{font-size:.7rem;}.fdot{width:4px;height:4px;}
+  .card{padding:1.2rem;}.iitem{min-width:90px;}
+  .romantic-gallery { grid-template-columns: 1fr; }
+  .gallery-sub-grid { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="passGate">
+  <div class="gate-box">
+    <h2>❄️ 旅隊私密專區</h2>
+    <p>請輸入密碼以解鎖 2026-2027 滑雪行程專頁</p>
+    <form onsubmit="checkPass(event)">
+      <input type="password" id="gatePass" placeholder="請輸入密碼..." autocomplete="current-password">
+      <button type="submit">認證並進入 🏂</button>
+    </form>
+    <div class="gate-err" id="gateErr">❌ 密碼錯誤，請再試一次</div>
+  </div>
+</div>
+
+<div id="petals"></div>
+
+<div class="hero">
+  <div class="hero-ground"></div>
+  <div class="hero-content">
+    <div class="hero-pill" id="heroPill">❄成員載入中❄</div>
+    <h1>冬日日本滑雪假期<em>Hakuba &amp; Japan · 2026-2027</em></h1>
+    <p class="hero-sub">共選雪期 · 浪漫同行 · 一起出發</p>
+  </div>
+</div>
+
+<div class="istrip">
+  <div class="iitem"><span class="iitem-icon">🏂</span><span class="iitem-text">Japow 粉雪天堂</span></div>
+  <div class="iitem"><span class="iitem-icon">🏔️</span><span class="iitem-text">白馬連峰壯麗雪景</span></div>
+  <div class="iitem"><span class="iitem-icon">♨️</span><span class="iitem-text">露天溫泉 Onsen</span></div>
+  <div class="iitem"><span class="iitem-icon">🎿</span><span class="iitem-text">Hakuba 璀璨夜滑</span></div>
+</div>
+
+<div class="wrap">
+
+  <div class="romantic-gallery">
+    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256" class="gallery-img" alt="Skiing Resort">
+    <div class="gallery-sub-grid">
+      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" class="gallery-img-sub" alt="Snow Mountain Resort">
+      <img src="https://images.unsplash.com/photo-1482867996988-2faec3cbb4f9" class="gallery-img-sub" alt="Ski Tracks on Snow">
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--blush)">🏂</div>
+    <div class="sh-title">旅伴成員 <span class="sh-sub">Members · 點選頭像切換使用者、按 Remake 修改名字</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <p style="font-size:.77rem;color:var(--tmid);margin-bottom:1rem;font-family:'Shippori Mincho',serif;">
+      請先點選你的名字（會顯示 YOU），接著就能在下方的行事曆上標記你有空的日子 ☃️
+    </p>
+    <div class="f-grid" id="fGrid"></div>
+    <div class="brow"><button class="btn btn-g" onclick="clrMe()">清除我的所有日期 ❌</button></div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--mint)">🏔️</div>
+    <div class="sh-title">想去的白馬谷雪場意向調查 <span class="sh-sub">Hakuba Resort Poll · 點擊即可投票或取消</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <p style="font-size:.77rem;color:var(--tmid);margin-bottom:1.2rem;font-family:'Shippori Mincho',serif;">
+      請選擇你想征服的滑雪場（選取個人頭像後點擊下方雪場即可投票，系統將即時計算重疊偏好）：
+    </p>
+    <div class="poll-list" id="pollList"></div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--sky)">📅</div>
+    <div class="sh-title">選擇你的空檔日期 <span class="sh-sub">Availability · 滑鼠按住拖曳可快速複選</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="cal-head">
+      <button class="nbtn" onclick="chM(-1)">◀</button>
+      <div><div class="cal-jp" id="mJp"></div><div class="cal-en" id="mEn"></div></div>
+      <button class="nbtn" onclick="chM(1)">▶</button>
+    </div>
+    <div class="wd-row">
+      <div class="wd" style="color:#c87090">日</div><div class="wd">月</div><div class="wd">火</div>
+      <div class="wd">水</div><div class="wd">木</div><div class="wd">金</div>
+      <div class="wd" style="color:#7aaacf">土</div>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+    <div class="cal-leg">
+      <div class="leg"><div class="lb" style="background:#fdf5f8;border-color:#f0e4ea"></div>無人選擇</div>
+      <div class="leg"><div class="lb" style="background:#fcdde8;border-color:#f0b0c8"></div>有人有空</div>
+      <div class="leg"><div class="lb" style="background:#e888b0;border-color:#c05890"></div>眾人重疊</div>
+      <div class="leg"><div class="lb" style="background:white;outline:2px solid var(--blue);outline-offset:1px"></div>你的選擇</div>
+    </div>
+  </div>
+
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--lav)">✨</div>
+    <div class="sh-title">最佳重疊時段推薦 <span class="sh-sub">Overlapping Windows · 僅計算並呈現有交集日期</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="blist" id="blist"><div class="empty-s">大家填寫日期後，此處將自動分析多人重疊的精華雪期檔期 🎿</div></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── (i) 密碼驗證邏輯 ──
+const SITE_PASS = "hakuba2027";
+function checkPass(event) {
+  if (event) event.preventDefault();
+  const input = document.getElementById('gatePass').value;
+  if(input === SITE_PASS) {
+    document.getElementById('passGate').style.opacity = '0';
+    setTimeout(() => document.getElementById('passGate').style.display = 'none', 400);
+    showToast("密碼認證成功！歡迎進入滑雪假期規劃專頁 ❄️");
+  } else {
+    document.getElementById('gateErr').style.display = 'block';
+  }
+}
+
+// ── 旅伴真實圖片綁定 ──
+let FR=[
+  {id:'F1',name:'Betty',  avatar:'Betty.jpg',  color:'#c87090',bg:'linear-gradient(135deg,#fff0f5,#ffd8e8)'},
+  {id:'F2',name:'Cal',    avatar:'Cal.jpg',    color:'#7aaacf',bg:'linear-gradient(135deg,#eef5ff,#d5e8f8)'},
+  {id:'F3',name:'Nigel',  avatar:'Nigel.jpg',  color:'#7aaa94',bg:'linear-gradient(135deg,#eef8f3,#d5f0e4)'},
+  {id:'F4',name:'Michael',avatar:'Michael.jpg',color:'#9f8fc8',bg:'linear-gradient(135deg,#f5f0ff,#e4d8f8)'},
+];
+
+let resorts = [
+  { id: 'r1', name: '白馬八方尾根滑雪場 (Happo-One)', votes: [] },
+  { id: 'r2', name: '白馬五龍滑雪場 (Goryu)', votes: [] },
+  { id: 'r3', name: 'Hakuba47 冬季運動公園', votes: [] },
+  { id: 'r4', name: '栂池高原滑雪場 (Tsugaike)', votes: [] },
+  { id: 'r5', name: '白馬岩岳雪場 (Iwatake)', votes: [] },
+  { id: 'r6', name: '白馬 Cortina 滑雪場', votes: [] },
+  { id: 'r7', name: '白馬乘鞍溫泉滑雪場 (Norikura)', votes: [] },
+  { id: 'r8', name: '其他雪場安排 (Others)', votes: [] }
+];
+
+const MJP=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const MEN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let S={dates:{},me:null,vm:12,vy:2026};
+FR.forEach(f=>S.dates[f.id]=new Set());
+
+// ── Firebase Realtime Database 串接 ──
+const DB_API_URL = "https://snowboard-b8795-default-rtdb.asia-southeast1.firebasedatabase.app/ski_trip.json";
+
+async function fetchFromDatabase() {
+  try {
+    const response = await fetch(DB_API_URL);
+    if (!response.ok) throw new Error('Firebase Fetch Error');
+    const dbData = await response.json();
+    
+    if (dbData) {
+      if (dbData.resorts) {
+        dbData.resorts.forEach(savedResort => {
+          const match = resorts.find(r => r.id === savedResort.id);
+          if (match) match.votes = savedResort.votes || [];
+        });
+      }
+      FR.forEach(f => {
+        if (dbData.names && dbData.names[f.id]) f.name = dbData.names[f.id];
+        if (dbData.dates && dbData.dates[f.id]) {
+          S.dates[f.id] = new Set(dbData.dates[f.id]);
+        } else {
+          S.dates[f.id] = new Set();
+        }
+      });
+    }
+    rAll();
+  } catch (error) {
+    console.error("使用本機暫存備份：", error);
+    const localData = localStorage.getItem('sk26_db_mock');
+    if (localData) {
+      const parsed = JSON.parse(localData);
+      if (parsed.resorts) {
+        parsed.resorts.forEach(savedResort => {
+          const match = resorts.find(r => r.id === savedResort.id);
+          if (match) match.votes = savedResort.votes || [];
+        });
+      }
+      FR.forEach(f => {
+        if (parsed.names && parsed.names[f.id]) f.name = parsed.names[f.id];
+        if (parsed.dates && parsed.dates[f.id]) S.dates[f.id] = new Set(parsed.dates[f.id]);
+      });
+    }
+    rAll();
+  }
+}
+
+async function saveToDatabase() {
+  updateHeroPill();
+  const payload = {
+    resorts: resorts,
+    names: FR.reduce((acc, f) => ({ ...acc, [f.id]: f.name }), {}),
+    dates: FR.reduce((acc, f) => ({ ...acc, [f.id]: [...S.dates[f.id]] }), {})
+  };
+  localStorage.setItem('sk26_db_mock', JSON.stringify(payload));
+  try {
+    await fetch(DB_API_URL, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  } catch (error) {}
+}
+
+const gf=id=>FR.find(f=>f.id===id);
+function updateHeroPill() { document.getElementById('heroPill').textContent = `❄ ${FR.map(f=>f.name).join(' · ')} ❄`; }
+
+function getOverlappingWindows(dc) {
+  const validDays = Object.keys(dc).filter(d => dc[d] && dc[d].length >= 2).sort();
+  if(!validDays.length) return [];
+  
+  let windows = [];
+  let curWin = null;
+  
+  for(let i=0; i<validDays.length; i++) {
+    const d = validDays[i];
+    const people = dc[d];
+    
+    if(!curWin) {
+      curWin = { s: d, e: d, people: new Set(people), minO: people.length };
+    } else {
+      const prevD = new Date(curWin.e + 'T00:00:00');
+      const nextD = new Date(d + 'T00:00:00');
+      const diffDays = Math.round((nextD - prevD)/86400000);
+      
+      if(diffDays === 1) {
+        curWin.e = d;
+        people.forEach(p => curWin.people.add(p));
+        if(people.length < curWin.minO) curWin.minO = people.length;
+      } else {
+        windows.push(curWin);
+        curWin = { s: d, e: d, people: new Set(people), minO: people.length };
+      }
+    }
+  }
+  if(curWin) windows.push(curWin);
+  return windows;
+}
+
+function fmtP(s,e){
+  const W=['日','一','二','三','四','五','六'];
+  const sd=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');
+  const days=Math.round((ed-sd)/86400000)+1;
+  if(s===e) return `${sd.getMonth()+1}月${sd.getDate()}日(${W[sd.getDay()]})`;
+  return `${sd.getMonth()+1}月${sd.getDate()}日(${W[sd.getDay()]}) – ${ed.getMonth()+1}月${ed.getDate()}日(${W[ed.getDay()]}) 共 ${days} 天`;
+}
+
+function rArr(s,e){
+  const r=[],c=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');
+  while(c <= ed){ r.push(c.toISOString().slice(0,10)); c.setDate(c.getDate()+1); }
+  return r;
+}
+
+function rFr(){
+  document.getElementById('fGrid').innerHTML=FR.map(f=>{
+    const isMe=S.me===f.id;
+    const lbl = S.dates[f.id].size ? `已選 ${S.dates[f.id].size} 天空檔` : '尚未選擇日期';
+    
+    return`<div class="f-card${isMe?' me':''}" style="background:${f.bg}" onclick="pickMe('${f.id}', event)">
+      ${isMe?'<div class="you">YOU</div>':''}
+      <div class="f-ava" style="background:${f.color}">
+        <img src="${f.avatar}" alt="${f.name}" onerror="this.style.display='none'; this.parentNode.innerText='${f.name[0]}';">
+      </div>
+      <div class="f-name">${f.name}</div>
+      <div class="f-dates">${lbl}</div>
+      <button class="remake-btn" onclick="remakeName('${f.id}', event)">Remake ✏️</button>
+    </div>`;
+  }).join('');
+}
+
+function pickMe(id, event){
+  if(event.target.classList.contains('remake-btn')) return;
+  S.me=id; localStorage.setItem('sk26_me_id', id);
+  showToast(`目前切換為：${gf(id).name}，下方已為您同步！ 🏂`);
+  rFr(); rCal(); rResorts();
+}
+
+function remakeName(id, event) {
+  event.stopPropagation();
+  const currentName = gf(id).name;
+  const newName = prompt(`請輸入新的名字稱呼:`, currentName);
+  if(newName && newName.trim()) {
+    gf(id).name = newName.trim(); saveToDatabase(); rAll();
+  }
+}
+
+function rResorts() {
+  const container = document.getElementById('pollList');
+  const totalUsers = FR.length;
+  
+  container.innerHTML = resorts.map(r => {
+    if(!r.votes) r.votes = [];
+    const isVoted = S.me ? r.votes.includes(S.me) : false;
+    const voteCount = r.votes.length;
+    const pct = totalUsers > 0 ? Math.round((voteCount / totalUsers) * 100) : 0;
+    const voterNames = r.votes.map(uid => gf(uid)?.name).filter(Boolean).join('、');
+    
+    return `
+      <div class="poll-item ${isVoted ? 'voted' : ''}" onclick="toggleVote('${r.id}')">
+        <div class="poll-meta">
+          <div class="poll-name">${r.name}</div>
+          <div class="poll-count">${voteCount} 票 (${pct}%)</div>
+        </div>
+        <div class="poll-track">
+          <div class="poll-fill" style="width: ${pct}%"></div>
+        </div>
+        ${voterNames ? `<div class="poll-voters">👍 支持成員：${voterNames}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleVote(resortId) {
+  if(!S.me) { showToast('請先在最上方點選你的名字（YOU）才能投票喔！ 👆'); return; }
+  const r = resorts.find(x => x.id === resortId);
+  if(!r.votes) r.votes = [];
+  
+  const idx = r.votes.indexOf(S.me);
+  if(idx > -1) {
+    r.votes.splice(idx, 1);
+    showToast(`已撤銷對 ${r.name} 的投票`);
+  } else {
+    r.votes.push(S.me);
+    showToast(`成功投票給 ${r.name}！ 🏔️`);
+  }
+  saveToDatabase();
+  rResorts();
+}
+
+/* ── 行事曆拖曳選取 ── */
+let D={on:false,start:null,mode:null,prev:new Set()};
+function dS(e,ds,past){
+  if(past||!S.me){if(!S.me)showToast('請先在最上方點選你的名字（YOU）才能畫時間 👆');return;}
+  e.preventDefault(); D.on=true; D.start=ds; D.mode=S.dates[S.me].has(ds)?'rm':'add'; D.prev=new Set([ds]); uDC();
+}
+function dO(e,ds,past){
+  if(!D.on||past)return;
+  const today=new Date(); today.setHours(0,0,0,0);
+  D.prev=new Set(rArr(D.start,ds).filter(d=>new Date(d+'T00:00:00')>=today)); uDC();
+}
+function dE(){
+  if(!D.on)return; D.on=false;
+  if(D.prev.size&&S.me){D.prev.forEach(d=>{if(D.mode==='add')S.dates[S.me].add(d);else S.dates[S.me].delete(d);}); saveToDatabase(); }
+  D.prev=new Set(); rAll();
+}
+function uDC(){document.querySelectorAll('.day[data-d]').forEach(el=>{el.classList.remove('dpv-add','dpv-rm');if(D.prev.has(el.dataset.d))el.classList.add(D.mode==='add'?'dpv-add':'dpv-rm');});}
+function tMv(e){e.preventDefault();const t=e.touches[0];const el=document.elementFromPoint(t.clientX,t.clientY)?.closest('.day[data-d]');if(el&&el.dataset.past!=='true')dO(e,el.dataset.d,false);}
+document.addEventListener('mouseup',()=>{if(D.on)dE();});
+
+function rCal(){
+  document.getElementById('mJp').textContent=`${S.vy}年 ${MJP[S.vm-1]}`;
+  document.getElementById('mEn').textContent=MEN[S.vm-1]+' '+S.vy;
+  const today=new Date(); today.setHours(0,0,0,0);
+  const fd=new Date(S.vy,S.vm-1,1).getDay(),td=new Date(S.vy,S.vm,0).getDate();
+  const dc={}; FR.forEach(f=>S.dates[f.id].forEach(d=>{if(!dc[d])dc[d]=[];dc[d].push(f.id);}));
+  const mySet=S.me?S.dates[S.me]:new Set();
+  let h='';
+  for(let i=0; i<fd; i++) h+='<div class="day empty"></div>';
+  for(let d=1; d<=td; d++){
+    const dt=new Date(S.vy,S.vm-1,d); dt.setHours(0,0,0,0); const past=dt<today;
+    const ds=`${S.vy}-${String(S.vm).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const ids=dc[ds]||[]; const heat=ids.length?Math.ceil(ids.length/FR.length*5):0;
+    const cls=['day',past?'past':'',dt.getTime()===today.getTime()?'today':'',ids.length?`h${Math.min(heat,5)}`:'',mySet.has(ds)?'mine':''].filter(Boolean).join(' ');
+    const dots=ids.map(id=>`<div class="fdot" style="background:${gf(id)?.color||'#ccc'}"></div>`).join('');
+    h+=`<div class="${cls}" data-d="${ds}" data-past="${past}" onmousedown="dS(event,'${ds}',${past})" onmouseover="dO(event,'${ds}',${past})" onmouseup="dE()" ontouchstart="dS(event,'${ds}',${past})" ontouchmove="tMv(event)" ontouchend="dE()"><span class="dn">${d}</span><div class="fdots">${dots}</div></div>`;
+  }
+  document.getElementById('cgrid').innerHTML=h;
+}
+function chM(d){S.vm+=d;if(S.vm>12){S.vm=1;S.vy++;}if(S.vm<1){S.vm=12;S.vy--;}rCal();}
+
+function rBest(){
+  const el=document.getElementById('blist');
+  const dc={}; FR.forEach(f=>S.dates[f.id].forEach(d=>{ if(!dc[d]) dc[d]=[]; dc[d].push(f.id); }));
+  
+  const windows = getOverlappingWindows(dc);
+  
+  if(!windows.length) {
+    el.innerHTML='<div class="empty-s">目前還沒有「共同重疊」的交集日期，旅伴們多填幾天試試看！ ⛷</div>'; return;
+  }
+  
+  windows.sort((a,b) => {
+    if(b.minO !== a.minO) return b.minO - a.minO;
+    return (new Date(b.e) - new Date(b.s)) - (new Date(a.e) - new Date(a.s));
+  });
+  
+  el.innerHTML=windows.slice(0, 5).map((win, i)=>{
+    const pct = Math.round(win.minO / FR.length * 100);
+    const who = [...win.people].map(id => `<span style="color:${gf(id)?.color}; font-weight:700">${gf(id)?.name}</span>`).join(' · ');
+    
+    return `<div class="bitem">
+      <div class="brank">${['①','②','③','④','⑤'][i]}</div>
+      <div style="flex:1">
+        <div class="blabel">${fmtP(win.s, win.e)}</div>
+        <div class="bwho" style="margin-top:0.3rem;">在此區間重疊的成員：${who}</div>
+        <div class="bbar-wrap">
+          <div class="bbar-track"><div class="bbar-fill" style="width:${pct}%"></div></div>
+          <div class="bpct">保底重疊: ${win.minO} 人</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function clrMe(){if(!S.me){showToast('請先點選你的名字 👆');return;}if(!confirm(`確定清除 ${gf(S.me).name} 的所有日期選擇？`))return;S.dates[S.me]=new Set();saveToDatabase();rAll();showToast('已清空您的日期');}
+let _tt; function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800);}
+
+function initPetals(){
+  const c=document.getElementById('petals');
+  ['❄','❅','·','✦'].forEach(ch=>{
+    for(let j=0;j<6;j++){
+      const s=document.createElement('div');s.className='petal';s.textContent=ch;
+      s.style.cssText=`left:${Math.random()*100}%;font-size:${.4+Math.random()*.8}rem;animation-duration:${7+Math.random()*12}s;animation-delay:${Math.random()*12}s`;
+      c.appendChild(s);
+    }
+  });
+}
+
+function rAll(){ rFr(); rCal(); rBest(); rResorts(); updateHeroPill(); }
+
+initPetals();
+const savedMe = localStorage.getItem('sk26_me_id');
+if(savedMe && FR.find(f=>f.id===savedMe)) S.me = savedMe;
+
+fetchFromDatabase();
+</script>
+</body>
+</html>
