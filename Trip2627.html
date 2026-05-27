@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冬日日本滑雪假期 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush:   #fdf0f5;
+  --petal:   #f5d8e8;
+  --sky:     #deeef8;
+  --lav:     #ede8f8;
+  --mint:    #e4f4ee;
+  --cream:   #fffaf6;
+  --rose:    #d4789a;
+  --blue:    #7aaacf;
+  --lilac:   #9f8fc8;
+  --sage:    #7aaa94;
+  --text:    #5a3d50;
+  --tmid:    #8a6a7a;
+  --tlt:     #b8a0b0;
+  --cedar:   #9a607a;
+  --accent:  #c86888;
+  --gold:    #d4956a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ── floating petals ── */
+.petal{position:fixed;top:-20px;pointer-events:none;z-index:200;opacity:0;color:rgba(210,120,154,0.55);animation:pfall linear infinite;}
+@keyframes pfall{0%{transform:translateY(0) rotate(0) translateX(0);opacity:0}8%{opacity:1}50%{transform:translateY(50vh) rotate(180deg) translateX(14px)}92%{opacity:.4}100%{transform:translateY(105vh) rotate(360deg) translateX(-8px);opacity:0}}
+
+/* ── HERO (pure CSS mountain scene) ── */
+.hero{
+  position:relative;width:100%;min-height:560px;max-height:800px;height:92vh;
+  overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  /* Sky gradient */
+  background:linear-gradient(180deg,
+    #c8dff5 0%,   /* pale winter sky top */
+    #deeef8 28%,
+    #edf6ff 48%,
+    #f8f0f5 68%,  /* blush horizon */
+    #fdf5f0 100%
+  );
+}
+
+/* Far mountains layer */
+.hero::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:62%;
+  clip-path:polygon(
+    0% 100%,0% 55%,
+    5% 38%,10% 55%,15% 28%,22% 52%,28% 18%,35% 46%,
+    42% 12%,50% 40%,57% 16%,64% 44%,70% 22%,78% 50%,
+    83% 30%,88% 52%,93% 35%,100% 55%,100% 100%
+  );
+  background:linear-gradient(180deg,#c0d8f0 0%,#b8cce0 40%,#a8b8ce 100%);
+}
+
+/* Near mountains layer */
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:48%;
+  clip-path:polygon(
+    0% 100%,0% 60%,
+    4% 42%,9% 62%,14% 34%,20% 58%,26% 26%,33% 52%,
+    40% 20%,47% 48%,54% 24%,61% 50%,67% 30%,74% 56%,
+    80% 36%,87% 58%,93% 38%,100% 56%,100% 100%
+  );
+  background:linear-gradient(180deg,#e0eef8 0%,#d0e0f0 30%,#b8cce0 100%);
+}
+
+/* Foreground snow hill */
+.hero-ground{
+  position:absolute;bottom:0;left:0;right:0;height:22%;
+  background:linear-gradient(180deg,#f8f4ff 0%,#f0ecf8 50%,#e8e0f0 100%);
+  clip-path:ellipse(65% 100% at 50% 100%);
+}
+
+/* Snow texture dots */
+.hero-snow{
+  position:absolute;bottom:16%;left:0;right:0;
+  display:flex;justify-content:space-around;align-items:flex-end;
+  padding:0 5%;
+}
+.snow-tree{
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  opacity:0.7;
+}
+.snow-tree div{
+  background:linear-gradient(180deg,#b8cce0,#9aaabb);
+  clip-path:polygon(50% 0%,0% 100%,100% 100%);
+}
+
+.hero-content{position:relative;z-index:5;text-align:center;padding:2rem 1.5rem 3rem;width:100%;}
+
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,0.82);backdrop-filter:blur(10px);
+  border:1px solid rgba(200,104,136,0.22);border-radius:30px;
+  padding:.3rem 1.1rem;font-size:.68rem;color:var(--cedar);
+  letter-spacing:.25em;margin-bottom:.9rem;
+  font-family:'Shippori Mincho',serif;
+  box-shadow:0 2px 12px rgba(200,104,136,0.1);
+}
+.hero h1{
+  font-family:'Shippori Mincho',serif;font-weight:800;
+  font-size:clamp(2rem,7vw,3.8rem);color:var(--text);
+  letter-spacing:.1em;line-height:1.1;
+  text-shadow:0 2px 20px rgba(255,255,255,.95);
+}
+.hero h1 em{
+  display:block;font-family:'Playfair Display',serif;font-style:italic;
+  font-weight:400;font-size:.46em;color:var(--cedar);
+  letter-spacing:.2em;margin-top:.4rem;
+}
+.hero-sub{margin-top:.7rem;font-size:.78rem;color:var(--tmid);letter-spacing:.18em;font-family:'Shippori Mincho',serif;}
+
+/* ── ICON STRIP ── */
+.istrip{
+  display:flex;background:white;
+  border-top:2px solid var(--petal);border-bottom:2px solid var(--petal);
+  overflow-x:auto;
+}
+.istrip::-webkit-scrollbar{display:none;}
+.iitem{
+  flex:1;min-width:120px;padding:1rem .5rem;text-align:center;
+  border-right:1px solid var(--petal);cursor:default;
+  transition:background .2s;
+}
+.iitem:last-child{border-right:none;}
+.iitem:hover{background:var(--blush);}
+.iitem-icon{font-size:1.6rem;display:block;margin-bottom:.35rem;}
+.iitem-text{font-size:.65rem;color:var(--tmid);letter-spacing:.1em;font-family:'Shippori Mincho',serif;}
+
+/* ── CONTAINER ── */
+.wrap{max-width:860px;margin:0 auto;padding:2.5rem 1.2rem 5rem;}
+
+/* ── SECTION HEADER ── */
+.sh{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;}
+.sh-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.sh-title{font-family:'Shippori Mincho',serif;font-weight:700;font-size:.95rem;letter-spacing:.1em;color:var(--cedar);}
+.sh-sub{display:block;font-size:.6rem;letter-spacing:.22em;color:var(--tlt);font-weight:400;margin-top:1px;text-transform:uppercase;}
+.sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--petal),transparent);}
+
+/* ── CARD ── */
+.card{
+  background:white;border-radius:18px;padding:1.8rem;margin-bottom:1.8rem;
+  border:1px solid rgba(200,104,136,.1);
+  box-shadow:0 2px 14px rgba(200,104,136,.07),0 8px 32px rgba(200,104,136,.04);
+  position:relative;overflow:hidden;
+}
+.card::after{content:'';position:absolute;bottom:-20px;right:-20px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(200,104,136,.06) 0%,transparent 70%);pointer-events:none;}
+
+/* ── CSS SCENE DIVIDERS ── */
+.scene-div{
+  border-radius:16px;margin-bottom:1.8rem;padding:2rem 2rem;
+  display:flex;align-items:center;position:relative;overflow:hidden;
+  min-height:140px;
+  box-shadow:0 4px 20px rgba(200,104,136,.1);
+}
+.scene-div-1{
+  background:linear-gradient(135deg,
+    #c8dff5 0%,#b8d0ee 25%,#c8d8f0 50%,#d8e8f8 75%,#e8f2ff 100%
+  );
+}
+.scene-div-2{
+  background:linear-gradient(135deg,
+    #f5e8f5 0%,#ead8f0 25%,#d8cce8 50%,#c8c0e0 75%,#d8cce8 100%
+  );
+}
+/* mini mountain silhouette inside dividers */
+.scene-div::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:55%;
+  clip-path:polygon(0% 100%,0% 60%,8% 30%,16% 58%,24% 18%,32% 50%,40% 10%,48% 44%,56% 20%,64% 48%,72% 28%,80% 55%,88% 32%,100% 58%,100% 100%);
+  background:rgba(255,255,255,0.2);
+}
+.scene-div::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:30%;
+  background:rgba(255,255,255,0.35);
+  clip-path:ellipse(60% 100% at 50% 100%);
+}
+.scene-quote{position:relative;z-index:2;}
+.q-text{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.95rem,2.8vw,1.3rem);color:white;
+  text-shadow:0 1px 12px rgba(80,40,60,.35);line-height:1.55;
+}
+.q-sub{
+  display:block;font-style:normal;font-size:.6em;font-family:'Noto Sans TC',sans-serif;
+  letter-spacing:.18em;margin-top:.4rem;opacity:.8;color:white;
+}
+
+/* ── FRIENDS ── */
+.f-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;}
+@media(min-width:480px){.f-grid{grid-template-columns:repeat(4,1fr);}}
+.f-card{
+  border-radius:14px;padding:1.1rem .7rem .9rem;text-align:center;
+  cursor:pointer;border:2.5px solid transparent;transition:all .2s ease;position:relative;
+}
+.f-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);}
+.f-card.me{
+  border-color:var(--accent)!important;
+  box-shadow:0 0 0 4px rgba(200,104,136,.12),0 6px 20px rgba(200,104,136,.18);
+  transform:translateY(-4px);
+}
+.you{position:absolute;top:7px;right:7px;background:var(--accent);color:white;font-size:.5rem;padding:.12rem .4rem;border-radius:10px;letter-spacing:.08em;font-family:'Shippori Mincho',serif;}
+.f-ava{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:white;margin:0 auto .5rem;box-shadow:0 3px 10px rgba(0,0,0,.1);}
+.f-name{font-family:'Shippori Mincho',serif;font-weight:700;font-size:.92rem;color:var(--text);letter-spacing:.04em;}
+.f-dates{font-size:.58rem;color:var(--tmid);margin-top:.3rem;line-height:1.6;white-space:pre-line;min-height:1em;}
+
+/* ── CALENDAR ── */
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;}
+.cal-jp{font-family:'Shippori Mincho',serif;font-size:1.25rem;font-weight:700;color:var(--cedar);letter-spacing:.08em;text-align:center;}
+.cal-en{font-size:.6rem;color:var(--tlt);letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-top:2px;}
+.nbtn{width:33px;height:33px;border-radius:50%;border:1.5px solid var(--petal);background:white;cursor:pointer;font-size:.8rem;color:var(--cedar);display:flex;align-items:center;justify-content:center;transition:all .15s;box-shadow:0 1px 4px rgba(200,104,136,.1);}
+.nbtn:hover{background:var(--blush);border-color:var(--rose);}
+.wd-row{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;}
+.wd{text-align:center;font-size:.62rem;font-family:'Shippori Mincho',serif;letter-spacing:.06em;color:var(--tlt);padding:.25rem 0;}
+.wd.sun{color:#c87090;}.wd.sat{color:#7aaacf;}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.day{
+  aspect-ratio:1;border-radius:8px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;cursor:pointer;position:relative;
+  background:#fdf5f8;border:1.5px solid #f0e4ea;transition:all .12s ease;
+  min-height:38px;user-select:none;
+}
+.day:hover:not(.empty):not(.past){border-color:var(--rose);background:var(--blush);transform:scale(1.06);z-index:2;}
+.day.empty{background:transparent;border-color:transparent;cursor:default;}
+.day.past{opacity:.28;cursor:not-allowed;}
+.day.today .dn{background:var(--accent);color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
+.dn{font-size:.77rem;font-family:'Shippori Mincho',serif;font-weight:600;color:var(--text);line-height:1;}
+.day.h1{background:#fff0f5;border-color:#f8d0e0;}
+.day.h2{background:#fcdde8;border-color:#f0b0c8;}
+.day.h3{background:#f8c0d4;border-color:#e090b8;}
+.day.h4{background:#f0a0c0;border-color:#d070a0;}
+.day.h5{background:#e888b0;border-color:#c05890;box-shadow:0 2px 8px rgba(232,136,176,.4);}
+.day.mine{outline:2.5px solid var(--blue);outline-offset:1px;}
+.day.dpv-add{background:#ddf0e8!important;border-color:#88c8a8!important;transform:scale(1.05);}
+.day.dpv-rm{background:#fde8ee!important;border-color:#e8a8b8!important;opacity:.7;}
+.fdots{display:flex;gap:2px;justify-content:center;margin-top:2px;flex-wrap:wrap;padding:0 2px;}
+.fdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.cal-leg{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--sky);}
+.leg{display:flex;align-items:center;gap:.3rem;font-size:.67rem;color:var(--tmid);}
+.lb{width:13px;height:13px;border-radius:3px;border:1.5px solid transparent;}
+.cal-tip{font-size:.68rem;color:var(--tlt);margin-top:.5rem;font-style:italic;}
+
+/* ── BEST DATES ── */
+.blist{display:flex;flex-direction:column;gap:.7rem;}
+.bitem{display:flex;gap:.9rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:12px;border:1px solid rgba(200,104,136,.13);transition:transform .15s;}
+.bitem:hover{transform:translateY(-1px);}
+.bitem:nth-child(1){background:linear-gradient(135deg,#fff0f6,white);border-color:rgba(200,104,136,.22);}
+.bitem:nth-child(2){background:linear-gradient(135deg,#eef5ff,white);border-color:rgba(122,170,207,.18);}
+.bitem:nth-child(3){background:linear-gradient(135deg,#f5f0ff,white);border-color:rgba(159,143,200,.18);}
+.bitem:nth-child(n+4){background:linear-gradient(135deg,#fdf5f0,white);border-color:rgba(212,149,106,.15);}
+.brank{font-family:'Playfair Display',serif;font-style:italic;font-size:1.5rem;min-width:1.8rem;text-align:center;line-height:1;margin-top:2px;}
+.bitem:nth-child(1) .brank{color:var(--accent);}
+.bitem:nth-child(2) .brank{color:var(--blue);}
+.bitem:nth-child(3) .brank{color:var(--lilac);}
+.bitem:nth-child(n+4) .brank{color:var(--gold);}
+.blabel{font-family:'Shippori Mincho',serif;font-weight:700;font-size:1rem;color:var(--cedar);line-height:1.3;}
+.bwho{font-size:.72rem;color:var(--tmid);margin-top:.3rem;line-height:1.7;}
+.bbar-wrap{display:flex;align-items:center;gap:.5rem;margin-top:.4rem;}
+.bbar-track{flex:1;height:5px;background:var(--sky);border-radius:3px;overflow:hidden;}
+.bbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--petal),var(--rose));}
+.bitem:nth-child(2) .bbar-fill{background:linear-gradient(90deg,#c0daee,var(--blue));}
+.bitem:nth-child(3) .bbar-fill{background:linear-gradient(90deg,#d8ceee,var(--lilac));}
+.bpct{font-size:.67rem;color:var(--tlt);min-width:2.8rem;text-align:right;}
+
+/* ── SHARE ── */
+.surl{background:#fdf5f8;border:1.5px solid var(--sky);border-radius:10px;padding:.8rem 1rem;font-size:.71rem;color:var(--tmid);word-break:break-all;font-family:monospace;margin-bottom:.8rem;cursor:text;user-select:all;}
+.brow{display:flex;gap:.6rem;flex-wrap:wrap;}
+.btn{padding:.62rem 1.3rem;border-radius:30px;border:none;font-family:'Shippori Mincho',serif;font-weight:700;font-size:.83rem;letter-spacing:.05em;cursor:pointer;transition:all .18s;}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--rose));color:white;box-shadow:0 3px 12px rgba(200,104,136,.3);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(200,104,136,.42);}
+.btn-g{background:white;color:var(--cedar);border:1.5px solid var(--petal);}
+.btn-g:hover{background:var(--blush);}
+.stip{font-size:.68rem;color:var(--tlt);margin-top:.55rem;font-style:italic;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,var(--accent),var(--rose));color:white;padding:.65rem 1.5rem;border-radius:30px;font-family:'Shippori Mincho',serif;font-size:.82rem;letter-spacing:.05em;box-shadow:0 4px 20px rgba(200,104,136,.38);transition:transform .3s ease;z-index:9999;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.empty-s{text-align:center;color:var(--tlt);font-size:.83rem;padding:1.5rem;font-style:italic;font-family:'Shippori Mincho',serif;}
+
+@media(max-width:480px){
+  .day{min-height:34px;border-radius:6px;}.dn{font-size:.7rem;}.fdot{width:4px;height:4px;}
+  .card{padding:1.2rem;}.iitem{min-width:90px;}
+}
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ground"></div>
+  <div class="hero-content">
+    <div class="hero-pill">❄ Cal · Betty · Michael · Nigel ❄</div>
+    <h1>冬日日本滑雪假期<em>Hakuba · Nagano · 2026</em></h1>
+    <p class="hero-sub">四人同行 · 共選雪期 · 一起出發</p>
+  </div>
+</div>
+
+<!-- ICON STRIP -->
+<div class="istrip">
+  <div class="iitem"><span class="iitem-icon">⛷️</span><span class="iitem-text">世界頂級粉雪</span></div>
+  <div class="iitem"><span class="iitem-icon">🏔️</span><span class="iitem-text">北阿爾卑斯山脈</span></div>
+  <div class="iitem"><span class="iitem-icon">♨️</span><span class="iitem-text">溫泉 Onsen</span></div>
+  <div class="iitem"><span class="iitem-icon">🍜</span><span class="iitem-text">長野美食</span></div>
+  <div class="iitem"><span class="iitem-icon">🎿</span><span class="iitem-text">10個滑雪場</span></div>
+</div>
+
+<!-- MAIN -->
+<div class="wrap">
+
+  <!-- Friends -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--blush)">🏂</div>
+    <div class="sh-title">旅伴 <span class="sh-sub">Members · 點選你的名字</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <p style="font-size:.77rem;color:var(--tmid);margin-bottom:1rem;font-family:'Shippori Mincho',serif;letter-spacing:.05em">
+      請點選你的名字，然後在下方日曆標記有空的日期 ☃️
+    </p>
+    <div class="f-grid" id="fGrid"></div>
+  </div>
+
+  <!-- Scene divider 1 -->
+  <div class="scene-div scene-div-1">
+    <div class="scene-quote">
+      <div class="q-text">"Powder snow, mountain air &amp; great friends…"</div>
+      <small class="q-sub">HAKUBA VALLEY · NAGANO · JAPAN</small>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--sky)">📅</div>
+    <div class="sh-title">選擇日期 <span class="sh-sub">Availability · 標記你有空的時間</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="cal-head">
+      <button class="nbtn" onclick="chM(-1)">◀</button>
+      <div><div class="cal-jp" id="mJp"></div><div class="cal-en" id="mEn"></div></div>
+      <button class="nbtn" onclick="chM(1)">▶</button>
+    </div>
+    <div class="wd-row">
+      <div class="wd sun">日</div><div class="wd">月</div><div class="wd">火</div>
+      <div class="wd">水</div><div class="wd">木</div><div class="wd">金</div>
+      <div class="wd sat">土</div>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+    <div class="cal-leg">
+      <div class="leg"><div class="lb" style="background:#fdf5f8;border-color:#f0e4ea"></div>未有人選</div>
+      <div class="leg"><div class="lb" style="background:#fcdde8;border-color:#f0b0c8"></div>有人有空</div>
+      <div class="leg"><div class="lb" style="background:#e888b0;border-color:#c05890"></div>眾人有空</div>
+      <div class="leg"><div class="lb" style="background:white;outline:2px solid var(--blue);outline-offset:1px"></div>你的選擇</div>
+      <div class="leg"><div class="lb" style="background:#ddf0e8;border-color:#88c8a8"></div>拖曳預覽</div>
+    </div>
+    <p class="cal-tip">💡 點選單日 · 拖曳選取一段時間 · 手機可滑動選擇</p>
+  </div>
+
+  <!-- Scene divider 2 -->
+  <div class="scene-div scene-div-2">
+    <div class="scene-quote">
+      <div class="q-text">"The Japanese Alps await your arrival…"</div>
+      <small class="q-sub">WINTER 2026 · SKI ADVENTURE</small>
+    </div>
+  </div>
+
+  <!-- Best dates -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--lav)">✨</div>
+    <div class="sh-title">最佳時段 <span class="sh-sub">Best Windows · 自動計算重疊空檔</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="blist" id="blist"><div class="empty-s">大家選好日期後，最佳重疊時段自動顯示 🎿</div></div>
+  </div>
+
+  <!-- Share -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--mint)">🔗</div>
+    <div class="sh-title">分享 <span class="sh-sub">Share Link · 發給旅伴</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="surl" id="surl">載入中…</div>
+    <div class="brow">
+      <button class="btn btn-p" onclick="cpLink()">複製連結 📋</button>
+      <button class="btn btn-g" onclick="clrMe()">清除我的資料</button>
+    </div>
+    <p class="stip">朋友開啟連結後點選名字，即可選擇日期，所有人同步更新 ❄</p>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const FR=[
+  {name:'Cal',    color:'#c87090',bg:'linear-gradient(135deg,#fff0f5,#ffd8e8)'},
+  {name:'Betty',  color:'#7aaacf',bg:'linear-gradient(135deg,#eef5ff,#d5e8f8)'},
+  {name:'Michael',color:'#7aaa94',bg:'linear-gradient(135deg,#eef8f3,#d5f0e4)'},
+  {name:'Nigel',  color:'#9f8fc8',bg:'linear-gradient(135deg,#f5f0ff,#e4d8f8)'},
+];
+const MJP=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const MEN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let S={dates:{},me:null,vm:12,vy:2026};
+FR.forEach(f=>S.dates[f.name]=new Set());
+
+function enc(){return btoa(FR.map(f=>[...S.dates[f.name]].sort().join(',')).join(';'));}
+function dec(s){try{atob(s).split(';').forEach((p,i)=>{S.dates[FR[i].name]=new Set(p?p.split(',').filter(Boolean):[]);});}catch(e){}}
+function save(){history.replaceState(null,'','#'+enc());if(S.me)localStorage.setItem('sk26',S.me);}
+function load(){const h=location.hash.slice(1);if(h)dec(h);const m=localStorage.getItem('sk26');if(m&&FR.find(f=>f.name===m))S.me=m;}
+const gf=n=>FR.find(f=>f.name===n);
+
+function grpP(arr){
+  if(!arr.length)return[];
+  const s=[...arr].sort(),out=[];let rs=s[0],rp=s[0];
+  for(let i=1;i<s.length;i++){
+    const g=(new Date(s[i]+'T00:00:00')-new Date(rp+'T00:00:00'))/86400000;
+    if(g===1)rp=s[i];else{out.push({s:rs,e:rp});rs=s[i];rp=s[i];}
+  }
+  out.push({s:rs,e:rp});return out;
+}
+function fmtP(s,e){
+  const W=['日','一','二','三','四','五','六'];
+  const sd=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');
+  const days=Math.round((ed-sd)/86400000)+1;
+  const sm=sd.getMonth()+1,sdd=sd.getDate(),sw=W[sd.getDay()];
+  const em=ed.getMonth()+1,edd=ed.getDate(),ew=W[ed.getDay()];
+  if(s===e)return`${sm}月${sdd}日(${sw})`;
+  if(sm===em)return`${sm}月${sdd}(${sw})–${edd}(${ew}) ${days}天`;
+  return`${sm}/${sdd}(${sw})–${em}/${edd}(${ew}) ${days}天`;
+}
+function rArr(s,e){
+  const r=[],c=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');
+  while(c<=ed){r.push(c.toISOString().slice(0,10));c.setDate(c.getDate()+1);}return r;
+}
+
+function rFr(){
+  document.getElementById('fGrid').innerHTML=FR.map(f=>{
+    const isMe=S.me===f.name;
+    const ps=grpP([...S.dates[f.name]]);
+    const lbl=ps.length?ps.map(p=>fmtP(p.s,p.e)).join('\n'):'尚未選擇日期';
+    return`<div class="f-card${isMe?' me':''}" style="background:${f.bg}" onclick="pickMe('${f.name}')">
+      ${isMe?'<div class="you">YOU</div>':''}
+      <div class="f-ava" style="background:${f.color}">${f.name[0]}</div>
+      <div class="f-name">${f.name}</div>
+      <div class="f-dates">${lbl}</div>
+    </div>`;
+  }).join('');
+}
+function pickMe(n){S.me=n;save();showToast(`你好，${n}！請選擇有空的日期 ⛷`);rAll();}
+
+let D={on:false,start:null,mode:null,prev:new Set(),did:false};
+function dS(e,ds,past){
+  if(past||!S.me){if(!S.me)showToast('請先點選你的名字 👆');return;}
+  e.preventDefault();D.on=true;D.did=false;D.start=ds;
+  D.mode=S.dates[S.me].has(ds)?'rm':'add';D.prev=new Set([ds]);uDC();
+}
+function dO(e,ds,past){
+  if(!D.on||past)return;D.did=true;
+  const today=new Date();today.setHours(0,0,0,0);
+  D.prev=new Set(rArr(D.start,ds).filter(d=>new Date(d+'T00:00:00')>=today));uDC();
+}
+function dE(){
+  if(!D.on)return;D.on=false;
+  if(D.prev.size&&S.me){D.prev.forEach(d=>{if(D.mode==='add')S.dates[S.me].add(d);else S.dates[S.me].delete(d);});save();}
+  D.prev=new Set();setTimeout(()=>{D.did=false;},50);rAll();
+}
+function uDC(){document.querySelectorAll('.day[data-d]').forEach(el=>{el.classList.remove('dpv-add','dpv-rm');if(D.prev.has(el.dataset.d))el.classList.add(D.mode==='add'?'dpv-add':'dpv-rm');});}
+function tMv(e){e.preventDefault();const t=e.touches[0];const el=document.elementFromPoint(t.clientX,t.clientY)?.closest('.day[data-d]');if(el&&el.dataset.past!=='true')dO(e,el.dataset.d,false);}
+document.addEventListener('mouseup',()=>{if(D.on)dE();});
+
+function rCal(){
+  document.getElementById('mJp').textContent=`${S.vy}年 ${MJP[S.vm-1]}`;
+  document.getElementById('mEn').textContent=MEN[S.vm-1]+' '+S.vy;
+  const today=new Date();today.setHours(0,0,0,0);
+  const fd=new Date(S.vy,S.vm-1,1).getDay(),td=new Date(S.vy,S.vm,0).getDate();
+  const dc={};FR.forEach(f=>S.dates[f.name].forEach(d=>{if(!dc[d])dc[d]=[];dc[d].push(f.name);}));
+  const mySet=S.me?S.dates[S.me]:new Set();
+  let h='';
+  for(let i=0;i<fd;i++)h+='<div class="day empty"></div>';
+  for(let d=1;d<=td;d++){
+    const dt=new Date(S.vy,S.vm-1,d);dt.setHours(0,0,0,0);
+    const past=dt<today;
+    const ds=`${S.vy}-${String(S.vm).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const names=dc[ds]||[];
+    const heat=names.length?Math.ceil(names.length/FR.length*5):0;
+    const cls=['day',past?'past':'',dt.getTime()===today.getTime()?'today':'',names.length?`h${Math.min(heat,5)}`:'',mySet.has(ds)?'mine':'',D.prev.has(ds)?(D.mode==='add'?'dpv-add':'dpv-rm'):''].filter(Boolean).join(' ');
+    const dots=names.map(n=>`<div class="fdot" style="background:${gf(n)?.color||'#ccc'}" title="${n}"></div>`).join('');
+    h+=`<div class="${cls}" data-d="${ds}" data-past="${past}" onmousedown="dS(event,'${ds}',${past})" onmouseover="dO(event,'${ds}',${past})" onmouseup="dE()" ontouchstart="dS(event,'${ds}',${past})" ontouchmove="tMv(event)" ontouchend="dE()"><span class="dn">${d}</span><div class="fdots">${dots}</div></div>`;
+  }
+  document.getElementById('cgrid').innerHTML=h;
+}
+function chM(d){S.vm+=d;if(S.vm>12){S.vm=1;S.vy++;}if(S.vm<1){S.vm=12;S.vy--;}rCal();}
+
+function rBest(){
+  const el=document.getElementById('blist');
+  const dc={};FR.forEach(f=>S.dates[f.name].forEach(d=>{if(!dc[d])dc[d]=[];dc[d].push(f.name);}));
+  const allD=Object.keys(dc).sort();
+  if(!allD.length){el.innerHTML='<div class="empty-s">大家選好日期後，最佳重疊時段自動顯示 🎿</div>';return;}
+  const runs=[];let rs=null,rp=null;
+  function pR(s,e){
+    const arr=rArr(s,e),minO=Math.min(...arr.map(d=>dc[d]?dc[d].length:0));
+    const allN=new Set();arr.forEach(d=>(dc[d]||[]).forEach(n=>allN.add(n)));
+    if(minO>0)runs.push({s,e,days:arr.length,minO,names:[...allN]});
+  }
+  for(const d of allD){
+    if(!rs){rs=d;rp=d;continue;}
+    const g=(new Date(d+'T00:00:00')-new Date(rp+'T00:00:00'))/86400000;
+    if(g===1)rp=d;else{pR(rs,rp);rs=d;rp=d;}
+  }
+  if(rs)pR(rs,rp);
+  runs.sort((a,b)=>b.minO!==a.minO?b.minO-a.minO:b.days-a.days);
+  const top=runs.slice(0,5);
+  if(!top.length){el.innerHTML='<div class="empty-s">暫時沒有重疊日期，繼續選吧 ⛷</div>';return;}
+  el.innerHTML=top.map(({s,e,days,minO,names},i)=>{
+    const pct=Math.round(minO/FR.length*100),arr=rArr(s,e);
+    const who=names.sort((a,b)=>arr.filter(d=>S.dates[b].has(d)).length-arr.filter(d=>S.dates[a].has(d)).length)
+      .map(n=>{const f=gf(n),cnt=arr.filter(d=>S.dates[n].has(d)).length,pt=cnt<days?`<span style="opacity:.55;font-size:.7em">(${cnt}/${days}天)</span>`:'';return`<span style="color:${f?.color||'#888'};font-weight:700">${n}</span>${pt}`;}).join(' · ');
+    return`<div class="bitem"><div class="brank">${['①','②','③','④','⑤'][i]}</div><div style="flex:1"><div class="blabel">${fmtP(s,e)}</div><div class="bwho">${who}</div><div class="bbar-wrap"><div class="bbar-track"><div class="bbar-fill" style="width:${pct}%"></div></div><div class="bpct">${minO}/${FR.length}人</div></div></div></div>`;
+  }).join('');
+}
+
+function cpLink(){navigator.clipboard.writeText(location.href).catch(()=>{const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);});showToast('連結已複製，發給大家吧 🎿');}
+function clrMe(){if(!S.me){showToast('請先點選你的名字');return;}if(!confirm(`確定清除 ${S.me} 的所有日期選擇？`))return;S.dates[S.me]=new Set();save();rAll();showToast('已清除');}
+
+let _tt;
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800);}
+
+function initPetals(){
+  const c=document.getElementById('petals');
+  ['❄','❅','·','✦','❋'].forEach(ch=>{
+    for(let j=0;j<4;j++){
+      const s=document.createElement('div');s.className='petal';s.textContent=ch;
+      s.style.cssText=`left:${Math.random()*100}%;font-size:${.4+Math.random()*.8}rem;animation-duration:${7+Math.random()*12}s;animation-delay:${Math.random()*12}s`;
+      c.appendChild(s);
+    }
+  });
+}
+
+function rAll(){rFr();rCal();rBest();document.getElementById('surl').textContent=location.href;}
+initPetals();load();rAll();
+</script>
+</body>
+</html>
