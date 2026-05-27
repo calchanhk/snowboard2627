@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冬日日本滑雪假期 2026-2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush:   #fdf0f5;
+  --petal:   #f5d8e8;
+  --sky:     #deeef8;
+  --lav:     #ede8f8;
+  --mint:    #e4f4ee;
+  --cream:   #fffaf6;
+  --rose:    #d4789a;
+  --blue:    #7aaacf;
+  --lilac:   #9f8fc8;
+  --sage:    #7aaa94;
+  --text:    #5a3d50;
+  --tmid:    #8a6a7a;
+  --tlt:     #b8a0b0;
+  --cedar:   #9a607a;
+  --accent:  #c86888;
+  --gold:    #d4956a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ── 飄雪特效 ── */
+.petal{position:fixed;top:-20px;pointer-events:none;z-index:200;opacity:0;color:rgba(210,120,154,0.55);animation:pfall linear infinite;}
+@keyframes pfall{0%{transform:translateY(0) rotate(0) translateX(0);opacity:0}8%{opacity:1}50%{transform:translateY(50vh) rotate(180deg) translateX(14px)}92%{opacity:.4}100%{transform:translateY(105vh) rotate(360deg) translateX(-8px);opacity:0}}
+
+/* ── 視覺大圖 ── */
+.hero{
+  position:relative;width:100%;min-height:560px;max-height:800px;height:92vh;
+  overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  background:linear-gradient(180deg, #c8dff5 0%, #deeef8 28%, #edf6ff 48%, #f8f0f5 68%, #fdf5f0 100%);
+}
+.hero::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:62%;
+  clip-path:polygon(0% 100%,0% 55%,5% 38%,10% 55%,15% 28%,22% 52%,28% 18%,35% 46%,42% 12%,50% 40%,57% 16%,64% 44%,70% 22%,78% 50%,83% 30%,88% 52%,93% 35%,100% 55%,100% 100%);
+  background:linear-gradient(180deg,#c0d8f0 0%,#b8cce0 40%,#a8b8ce 100%);
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:48%;
+  clip-path:polygon(0% 100%,0% 60%,4% 42%,9% 62%,14% 34%,20% 58%,26% 26%,33% 52%,40% 20%,47% 48%,54% 24%,61% 50%,67% 30%,74% 56%,80% 36%,87% 58%,93% 38%,100% 56%,100% 100%);
+  background:linear-gradient(180deg,#e0eef8 0%,#d0e0f0 30%,#b8cce0 100%);
+}
+.hero-ground{
+  position:absolute;bottom:0;left:0;right:0;height:22%;
+  background:linear-gradient(180deg,#f8f4ff 0%,#f0ecf8 50%,#e8e0f0 100%);
+  clip-path:ellipse(65% 100% at 50% 100%);
+}
+.hero-content{position:relative;z-index:5;text-align:center;padding:2rem 1.5rem 3rem;width:100%;}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,0.82);backdrop-filter:blur(10px);
+  border:1px solid rgba(200,104,136,0.22);border-radius:30px;
+  padding:.3rem 1.1rem;font-size:.68rem;color:var(--cedar);
+  letter-spacing:.25em;margin-bottom:.9rem;
+  font-family:'Shippori Mincho',serif;
+  box-shadow:0 2px 12px rgba(200,104,136,0.1);
+}
+.hero h1{
+  font-family:'Shippori Mincho',serif;font-weight:800;
+  font-size:clamp(2rem,7vw,3.8rem);color:var(--text);
+  letter-spacing:.1em;line-height:1.1;
+  text-shadow:0 2px 20px rgba(255,255,255,.95);
+}
+.hero h1 em{
+  display:block;font-family:'Playfair Display',serif;font-style:italic;
+  font-weight:400;font-size:.46em;color:var(--cedar);
+  letter-spacing:.2em;margin-top:.4rem;
+}
+.hero-sub{margin-top:.7rem;font-size:.78rem;color:var(--tmid);letter-spacing:.18em;font-family:'Shippori Mincho',serif;}
+
+/* ── 特色橫條 ── */
+.istrip{display:flex;background:white;border-top:2px solid var(--petal);border-bottom:2px solid var(--petal);overflow-x:auto;}
+.istrip::-webkit-scrollbar{display:none;}
+.iitem{flex:1;min-width:120px;padding:1rem .5rem;text-align:center;border-right:1px solid var(--petal);cursor:default;transition:background .2s;}
+.iitem:last-child{border-right:none;}
+.iitem:hover{background:var(--blush);}
+.iitem-icon{font-size:1.6rem;display:block;margin-bottom:.35rem;}
+.iitem-text{font-size:.65rem;color:var(--tmid);letter-spacing:.1em;font-family:'Shippori Mincho',serif;}
+
+/* ── 內容容器 ── */
+.wrap{max-width:860px;margin:0 auto;padding:2.5rem 1.2rem 5rem;}
+
+/* ── 區塊標題 ── */
+.sh{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;}
+.sh-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.sh-title{font-family:'Shippori Mincho',serif;font-weight:700;font-size:.95rem;letter-spacing:.1em;color:var(--cedar);}
+.sh-sub{display:block;font-size:.6rem;letter-spacing:.22em;color:var(--tlt);font-weight:400;margin-top:1px;text-transform:uppercase;}
+.sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--petal),transparent);}
+
+/* ── 卡片樣式 ── */
+.card{
+  background:white;border-radius:18px;padding:1.8rem;margin-bottom:1.8rem;
+  border:1px solid rgba(200,104,136,.1);
+  box-shadow:0 2px 14px rgba(200,104,136,.07),0 8px 32px rgba(200,104,136,.04);
+  position:relative;overflow:hidden;
+}
+
+/* ── 修正後的滑雪相簿 ── */
+.romantic-gallery {display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 2.5rem;}
+.gallery-img {width: 100%; height: 260px; object-fit: cover; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); background-color: #eef5ff;}
+.gallery-sub-grid {display: grid; grid-template-rows: 1fr 1fr; gap: 12px;}
+.gallery-img-sub {width: 100%; height: 124px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); background-color: #eef5ff;}
+
+/* ── 成員與修改 ── */
+.f-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;}
+@media(min-width:480px){.f-grid{grid-template-columns:repeat(4,1fr);}}
+.f-card{border-radius:14px;padding:1.1rem .7rem .9rem;text-align:center;cursor:pointer;border:2.5px solid transparent;transition:all .2s ease;position:relative;}
+.f-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);}
+.f-card.me{border-color:var(--accent)!important;box-shadow:0 0 0 4px rgba(200,104,136,.12),0 6px 20px rgba(200,104,136,.18);transform:translateY(-4px);}
+.you{position:absolute;top:7px;right:7px;background:var(--accent);color:white;font-size:.5rem;padding:.12rem .4rem;border-radius:10px;letter-spacing:.08em;font-family:'Shippori Mincho',serif;}
+.f-ava{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:white;margin:0 auto .5rem;box-shadow:0 3px 10px rgba(0,0,0,.1);}
+.f-name{font-family:'Shippori Mincho',serif;font-weight:700;font-size:.92rem;color:var(--text);letter-spacing:.04em;}
+.f-dates{font-size:.58rem;color:var(--tmid);margin-top:.3rem;line-height:1.6;white-space:pre-line;min-height:1em;}
+.remake-btn {margin-top: 8px; font-size: 0.6rem; padding: 2px 8px; border: 1px solid rgba(200,104,136,0.15); background: rgba(255,255,255,0.7); border-radius: 10px; color: var(--tmid); cursor: pointer; transition: all 0.15s;}
+.remake-btn:hover { background: white; color: var(--accent); border-color: var(--accent); }
+
+/* ── 許願池 ── */
+.wish-input-row { display: flex; gap: 10px; margin-bottom: 1.2rem; }
+.input-field {flex: 1; padding: 0.6rem 1rem; border-radius: 20px; border: 1.5px solid var(--petal); font-size: 0.85rem; color: var(--text); outline: none; background: #fffbfd;}
+.input-field:focus { border-color: var(--rose); background: white; }
+.wish-container { display: flex; flex-wrap: wrap; gap: 8px; }
+.wish-tag {background: var(--blush); border: 1px solid var(--petal); padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; display: inline-flex; align-items: center; gap: 6px; animation: fadeIn 0.3s ease;}
+.wish-by { font-size: 0.65rem; color: var(--tlt); font-style: italic; }
+.wish-del { cursor: pointer; color: var(--rose); font-weight: bold; margin-left: 2px; font-size: 0.9rem; }
+.wish-del:hover { color: var(--accent); }
+
+/* ── 行事曆 ── */
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;}
+.cal-jp{font-family:'Shippori Mincho',serif;font-size:1.25rem;font-weight:700;color:var(--cedar);letter-spacing:.08em;text-align:center;}
+.cal-en{font-size:.6rem;color:var(--tlt);letter-spacing:.2em;text-transform:uppercase;text-align:center;margin-top:2px;}
+.nbtn{width:33px;height:33px;border-radius:50%;border:1.5px solid var(--petal);background:white;cursor:pointer;font-size:.8rem;color:var(--cedar);display:flex;align-items:center;justify-content:center;transition:all .15s;box-shadow:0 1px 4px rgba(200,104,136,.1);}
+.nbtn:hover{background:var(--blush);border-color:var(--rose);}
+.wd-row{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;}
+.wd{text-align:center;font-size:.62rem;font-family:'Shippori Mincho',serif;letter-spacing:.06em;color:var(--tlt);padding:.25rem 0;}
+.wd.sun{color:#c87090;}.wd.sat{color:#7aaacf;}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.day{aspect-ratio:1;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;background:#fdf5f8;border:1.5px solid #f0e4ea;transition:all .12s ease;min-height:38px;user-select:none;}
+.day:hover:not(.empty):not(.past){border-color:var(--rose);background:var(--blush);transform:scale(1.06);z-index:2;}
+.day.empty{background:transparent;border-color:transparent;cursor:default;}
+.day.past{opacity:.28;cursor:not-allowed;}
+.day.today .dn{background:var(--accent);color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
+.dn{font-size:.77rem;font-family:'Shippori Mincho',serif;font-weight:600;color:var(--text);line-height:1;}
+.day.h1{background:#fff0f5;border-color:#f8d0e0;}
+.day.h2{background:#fcdde8;border-color:#f0b0c8;}
+.day.h3{background:#f8c0d4;border-color:#e090b8;}
+.day.h4{background:#f0a0c0;border-color:#d070a0;}
+.day.h5{background:#e888b0;border-color:#c05890;box-shadow:0 2px 8px rgba(232,136,176,.4);}
+.day.mine{outline:2.5px solid var(--blue);outline-offset:1px;}
+.day.dpv-add{background:#ddf0e8!important;border-color:#88c8a8!important;transform:scale(1.05);}
+.day.dpv-rm{background:#fde8ee!important;border-color:#e8a8b8!important;opacity:.7;}
+.fdots{display:flex;gap:2px;justify-content:center;margin-top:2px;flex-wrap:wrap;padding:0 2px;}
+.fdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.cal-leg{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--sky);}
+.leg{display:flex;align-items:center;gap:.3rem;font-size:.67rem;color:var(--tmid);}
+.lb{width:13px;height:13px;border-radius:3px;border:1.5px solid transparent;}
+.cal-tip{font-size:.68rem;color:var(--tlt);margin-top:.5rem;font-style:italic;}
+
+/* ── 最佳日期推薦 ── */
+.blist{display:flex;flex-direction:column;gap:.7rem;}
+.bitem{display:flex;gap:.9rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:12px;border:1px solid rgba(200,104,136,.13);transition:transform .15s;}
+.bitem:hover{transform:translateY(-1px);}
+.bitem:nth-child(1){background:linear-gradient(135deg,#fff0f6,white);border-color:rgba(200,104,136,.22);}
+.bitem:nth-child(2){background:linear-gradient(135deg,#eef5ff,white);border-color:rgba(122,170,207,.18);}
+.bitem:nth-child(3){background:linear-gradient(135deg,#f5f0ff,white);border-color:rgba(159,143,200,.18);}
+.bitem:nth-child(n+4){background:linear-gradient(135deg,#fdf5f0,white);border-color:rgba(212,149,106,.15);}
+.brank{font-family:'Playfair Display',serif;font-style:italic;font-size:1.5rem;min-width:1.8rem;text-align:center;line-height:1;margin-top:2px;}
+.bitem:nth-child(1) .brank{color:var(--accent);}
+.bitem:nth-child(2) .brank{color:var(--blue);}
+.bitem:nth-child(3) .brank{color:var(--lilac);}
+.bitem:nth-child(n+4) .brank{color:var(--gold);}
+.blabel{font-family:'Shippori Mincho',serif;font-weight:700;font-size:1rem;color:var(--cedar);line-height:1.3;}
+.bwho{font-size:.72rem;color:var(--tmid);margin-top:.3rem;line-height:1.7;}
+.bbar-wrap{display:flex;align-items:center;gap:.5rem;margin-top:.4rem;}
+.bbar-track{flex:1;height:5px;background:var(--sky);border-radius:3px;overflow:hidden;}
+.bbar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--petal),var(--rose));}
+.bitem:nth-child(2) .bbar-fill{background:linear-gradient(90deg,#c0daee,var(--blue));}
+.bitem:nth-child(3) .bbar-fill{background:linear-gradient(90deg,#d8ceee,var(--lilac));}
+.bpct{font-size:.67rem;color:var(--tlt);min-width:2.8rem;text-align:right;}
+
+/* ── 分享 ── */
+.brow{display:flex;gap:.6rem;flex-wrap:wrap;}
+.btn{padding:.62rem 1.3rem;border-radius:30px;border:none;font-family:'Shippori Mincho',serif;font-weight:700;font-size:.83rem;letter-spacing:.05em;cursor:pointer;transition:all .18s;}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--rose));color:white;box-shadow:0 3px 12px rgba(200,104,136,.3);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(200,104,136,.42);}
+.btn-g{background:white;color:var(--cedar);border:1.5px solid var(--petal);}
+.btn-g:hover{background:var(--blush);}
+.stip{font-size:.68rem;color:var(--tlt);margin-top:.55rem;font-style:italic;}
+
+/* ── 提示彈窗 ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,var(--accent),var(--rose));color:white;padding:.65rem 1.5rem;border-radius:30px;font-family:'Shippori Mincho',serif;font-size:.82rem;letter-spacing:.05em;box-shadow:0 4px 20px rgba(200,104,136,.38);transition:transform .3s ease;z-index:9999;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.empty-s{text-align:center;color:var(--tlt);font-size:.83rem;padding:1.5rem;font-style:italic;font-family:'Shippori Mincho',serif;}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+@media(max-width:480px){
+  .day{min-height:34px;border-radius:6px;}.dn{font-size:.7rem;}.fdot{width:4px;height:4px;}
+  .card{padding:1.2rem;}.iitem{min-width:90px;}
+  .romantic-gallery { grid-template-columns: 1fr; }
+  .gallery-sub-grid { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<!-- 視覺大圖區 -->
+<div class="hero">
+  <div class="hero-ground"></div>
+  <div class="hero-content">
+    <div class="hero-pill" id="heroPill">❄成員載入中❄</div>
+    <h1>冬日日本滑雪假期<em>Hakuba &amp; Japan · 2026-2027</em></h1>
+    <p class="hero-sub">共選雪期 · 浪漫同行 · 一起出發</p>
+  </div>
+</div>
+
+<!-- 特色橫條 -->
+<div class="istrip">
+  <div class="iitem"><span class="iitem-icon">🏂</span><span class="iitem-text">Japow 粉雪天堂</span></div>
+  <div class="iitem"><span class="iitem-icon">🏔️</span><span class="iitem-text">白馬連峰壯麗雪景</span></div>
+  <div class="iitem"><span class="iitem-icon">♨️</span><span class="iitem-text">露天溫泉 Onsen</span></div>
+  <div class="iitem"><span class="iitem-icon">🍜</span><span class="iitem-text">信州居酒屋美食</span></div>
+  <div class="iitem"><span class="iitem-icon">🎿</span><span class="iitem-text">Hakuba 璀璨夜滑</span></div>
+</div>
+
+<div class="wrap">
+
+  <!-- ⚡ 100% 穩定且高解析度的極致滑雪與日本白馬相簿 ⚡ -->
+  <div class="romantic-gallery">
+    <!-- 主視覺左圖：動作感爆發的單板滑雪者與漫天粉雪 -->
+    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Snowboarding in Powder Snow">
+    <div class="gallery-sub-grid">
+      <!-- 右上小圖：壯美的長野白馬阿爾卑斯連峰冬景 -->
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="gallery-img-sub" alt="Beautiful Snowy Winter Mountain Range">
+      <!-- 右下小圖：雪地上的單板近寫特寫，出發感十足 -->
+      <img src="https://images.unsplash.com/photo-1482867996988-2faec3cbb4f9?auto=format&fit=crop&w=400&q=80" class="gallery-img-sub" alt="Snowboard on Ski Resort Ground">
+    </div>
+  </div>
+
+  <!-- 旅伴成員區塊 -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--blush)">🏂</div>
+    <div class="sh-title">旅伴成員 <span class="sh-sub">Members · 點選頭像切換使用者、按 Remake 修改名字</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <p style="font-size:.77rem;color:var(--tmid);margin-bottom:1rem;font-family:'Shippori Mincho',serif;letter-spacing:.05em">
+      請先點選你的名字（會顯示 YOU），接著就能在下方的行事曆上畫上有空的日子 ☃️
+    </p>
+    <div class="f-grid" id="fGrid"></div>
+  </div>
+
+  <!-- 許願池區塊 -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--mint)">🏔️</div>
+    <div class="sh-title">想去的雪場 <span class="sh-sub">Destinations · 白馬谷等想去的地點</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <p style="font-size:.77rem;color:var(--tmid);margin-bottom:1rem;font-family:'Shippori Mincho',serif;">
+      自由新增你想去的滑雪地點（例如：八方尾根、五龍47、栂池高原、岩岳等白馬谷雪場）：
+    </p>
+    <div class="wish-input-row">
+      <input type="text" id="wishInput" class="input-field" placeholder="輸入想去的地區或雪場..." onkeypress="if(event.key==='Enter')addWish()">
+      <button class="btn btn-p" style="padding:0.5rem 1.5rem;" onclick="addWish()">送出 ✨</button>
+    </div>
+    <div class="wish-container" id="wishContainer"></div>
+  </div>
+
+  <!-- 行事曆區塊 -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--sky)">📅</div>
+    <div class="sh-title">選擇日期 <span class="sh-sub">Availability · 標記你有空的時間</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="cal-head">
+      <button class="nbtn" onclick="chM(-1)">◀</button>
+      <div><div class="cal-jp" id="mJp"></div><div class="cal-en" id="mEn"></div></div>
+      <button class="nbtn" onclick="chM(1)">▶</button>
+    </div>
+    <div class="wd-row">
+      <div class="wd sun">日</div><div class="wd">月</div><div class="wd">火</div>
+      <div class="wd water">水</div><div class="wd">木</div><div class="wd">金</div>
+      <div class="wd sat">土</div>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+    <div class="cal-leg">
+      <div class="leg"><div class="lb" style="background:#fdf5f8;border-color:#f0e4ea"></div>無人選擇</div>
+      <div class="leg"><div class="lb" style="background:#fcdde8;border-color:#f0b0c8"></div>有人有空</div>
+      <div class="leg"><div class="lb" style="background:#e888b0;border-color:#c05890"></div>眾人皆空</div>
+      <div class="leg"><div class="lb" style="background:white;outline:2px solid var(--blue);outline-offset:1px"></div>你的選擇</div>
+      <div class="leg"><div class="lb" style="background:#ddf0e8;border-color:#88c8a8"></div>拖曳預覽</div>
+    </div>
+    <p class="cal-tip">💡 小提示：點擊或在日期上「按住拖曳」可快速選取/取消多個日期，手機瀏覽也支援滑動選取！</p>
+  </div>
+
+  <!-- 最佳時段推薦 -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--lav)">✨</div>
+    <div class="sh-title">最佳推薦時段 <span class="sh-sub">Best Windows · 自動計算重疊空檔</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="blist" id="blist"><div class="empty-s">大家選好日期後，最佳重疊時段自動顯示 🎿</div></div>
+  </div>
+
+  <!-- 分享與資料庫同步區塊 -->
+  <div class="sh">
+    <div class="sh-dot" style="background:var(--mint)">🔗</div>
+    <div class="sh-title">群組共享連結 <span class="sh-sub">Share Link · 發給旅伴填寫</span></div>
+    <div class="sh-line"></div>
+  </div>
+  <div class="card">
+    <div class="brow">
+      <button class="btn btn-p" onclick="cpLink()">複製此頁網址傳給旅伴 📋</button>
+      <button class="btn btn-g" onclick="clrMe()">清除我的資料</button>
+    </div>
+    <p class="stip">⚡ 已開啟 Firebase 即時自動同步功能！任何修改都會直接寫入資料庫，旅伴只要重新整理頁面即可看到最新狀況，**不需重複複製網址**！</p>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// 1. 固定初始化的四位旅伴名字
+let FR=[
+  {id:'F1',name:'Betty',  color:'#c87090',bg:'linear-gradient(135deg,#fff0f5,#ffd8e8)'},
+  {id:'F2',name:'Cal',    color:'#7aaacf',bg:'linear-gradient(135deg,#eef5ff,#d5e8f8)'},
+  {id:'F3',name:'Nigel',  color:'#7aaa94',bg:'linear-gradient(135deg,#eef8f3,#d5f0e4)'},
+  {id:'F4',name:'Michael',color:'#9f8fc8',bg:'linear-gradient(135deg,#f5f0ff,#e4d8f8)'},
+];
+const MJP=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const MEN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let S={dates:{},me:null,vm:12,vy:2026,wishes:[]};
+FR.forEach(f=>S.dates[f.id]=new Set());
+
+// ──────────────────────────────────────────────────────────
+// 3. 連接 Firebase Realtime Database
+// ──────────────────────────────────────────────────────────
+const DB_API_URL = "https://snowboard-b8795-default-rtdb.asia-southeast1.firebasedatabase.app/ski_trip.json";
+
+async function fetchFromDatabase() {
+  try {
+    const response = await fetch(DB_API_URL);
+    if (!response.ok) throw new Error('Firebase Fetch Error');
+    const dbData = await response.json();
+    
+    if (dbData) {
+      if (dbData.wishes) S.wishes = dbData.wishes;
+      FR.forEach(f => {
+        if (dbData.names && dbData.names[f.id]) f.name = dbData.names[f.id];
+        if (dbData.dates && dbData.dates[f.id]) {
+          S.dates[f.id] = new Set(dbData.dates[f.id]);
+        } else {
+          S.dates[f.id] = new Set();
+        }
+      });
+    }
+    rAll();
+  } catch (error) {
+    console.error("Firebase 連線失敗，使用本機暫存備份：", error);
+    const localData = localStorage.getItem('sk26_db_mock');
+    if (localData) {
+      const parsed = JSON.parse(localData);
+      if (parsed.wishes) S.wishes = parsed.wishes;
+      FR.forEach(f => {
+        if (parsed.names && parsed.names[f.id]) f.name = parsed.names[f.id];
+        if (parsed.dates && parsed.dates[f.id]) S.dates[f.id] = new Set(parsed.dates[f.id]);
+      });
+    }
+    rAll();
+  }
+}
+
+async function saveToDatabase() {
+  updateHeroPill();
+  
+  const payload = {
+    wishes: S.wishes,
+    names: FR.reduce((acc, f) => ({ ...acc, [f.id]: f.name }), {}),
+    dates: FR.reduce((acc, f) => ({ ...acc, [f.id]: [...S.dates[f.id]] }), {})
+  };
+
+  localStorage.setItem('sk26_db_mock', JSON.stringify(payload));
+
+  try {
+    await fetch(DB_API_URL, {
+      method: 'PUT', 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (error) {
+    console.error("無法即時儲存至 Firebase：", error);
+  }
+}
+// ──────────────────────────────────────────────────────────
+
+const gf=id=>FR.find(f=>f.id===id);
+
+function updateHeroPill() {
+  document.getElementById('heroPill').textContent = `❄ ${FR.map(f=>f.name).join(' · ')} ❄`;
+}
+
+function grpP(arr){
+  if(!arr.length)return[];
+  const s=[...arr].sort(),out=[];let rs=s[0],rp=s[0];
+  for(let i=1;i<s.length;i++){
+    const g=(new Date(s[i]+'T00:00:00')-new Date(rp+'T00:00:00'))/86400000;
+    if(g===1)rp=s[i];else{out.push({s:rs,e:rp});rs=s[i];rp=s[i];}
+  }
+  out.push({s:rs,e:rp});return out;
+}
+
+function fmtP(s,e){
+  const W=['日','一','二','三','四','五','六'];
+  const sd=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');
+  const days=Math.round((ed-sd)/86400000)+1;
+  const sm=sd.getMonth()+1,sdd=sd.getDate(),sw=W[sd.getDay()];
+  const em=ed.getMonth()+1,edd=ed.getDate(),ew=W[ed.getDay()];
+  if(s===e)return`${sm}月${sdd}日(${sw})`;
+  if(sm===em)return`${sm}月${sdd}日(${sw}) – ${edd}日(${ew}) 共 ${days} 天`;
+  return`${sm}月${sdd}日(${sw}) – ${em}月${edd}日(${ew}) 共 ${days} 天`;
+}
+
+function rArr(s,e){
+  const r=[],c=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');
+  if (c > ed) {
+    let tmp = new Date(ed);
+    while(tmp <= c){ r.push(tmp.toISOString().slice(0,10)); tmp.setDate(tmp.getDate()+1); }
+    return r;
+  }
+  while(c <= ed){ r.push(c.toISOString().slice(0,10)); c.setDate(c.getDate()+1); }
+  return r;
+}
+
+function rFr(){
+  document.getElementById('fGrid').innerHTML=FR.map(f=>{
+    const isMe=S.me===f.id;
+    const ps=grpP([...S.dates[f.id]]);
+    const lbl=ps.length?ps.map(p=>fmtP(p.s,p.e)).join('\n'):'尚未選擇日期';
+    return`<div class="f-card${isMe?' me':''}" style="background:${f.bg}" onclick="pickMe('${f.id}', event)">
+      ${isMe?'<div class="you">YOU</div>':''}
+      <div class="f-ava" style="background:${f.color}">${f.name[0]||'?'}</div>
+      <div class="f-name">${f.name}</div>
+      <div class="f-dates">${lbl}</div>
+      <button class="remake-btn" onclick="remakeName('${f.id}', event)">Remake ✏️</button>
+    </div>`;
+  }).join('');
+}
+
+function pickMe(id, event){
+  if(event.target.classList.contains('remake-btn')) return;
+  S.me=id;
+  localStorage.setItem('sk26_me_id', id);
+  showToast(`目前使用者：${gf(id).name}！請開始在行事曆上拖曳或點選日期 🏂`);
+  rFr(); rCal();
+}
+
+function remakeName(id, event) {
+  event.stopPropagation();
+  const currentName = gf(id).name;
+  const newName = prompt(`請輸入新的名字稱呼:`, currentName);
+  if(newName && newName.trim()) {
+    gf(id).name = newName.trim();
+    saveToDatabase();
+    rAll();
+    showToast(`名字已成功更新為 ${newName}！`);
+  }
+}
+
+function addWish() {
+  if(!S.me) { showToast('請先在上方選取你是哪一位成員才能許願雪場喔！ 👆'); return; }
+  const input = document.getElementById('wishInput');
+  const txt = input.value.trim();
+  if(!txt) return;
+  S.wishes.push({ text: txt, by: gf(S.me).name });
+  input.value = '';
+  saveToDatabase();
+  rWishes();
+}
+
+function rWishes() {
+  const container = document.getElementById('wishContainer');
+  if(!S.wishes.length) { container.innerHTML = '<span style="color:var(--tlt); font-size:0.78rem; font-style:italic;">目前沒有敲碗目標，輸入你想去的滑雪場吧！</span>'; return; }
+  container.innerHTML = S.wishes.map((w, i) => `
+    <div class="wish-tag">
+      <strong>${w.text}</strong> <span class="wish-by">by ${w.by}</span>
+      <span class="wish-del" onclick="deleteWish(${i})">×</span>
+    </div>
+  `).join('');
+}
+
+function deleteWish(index) {
+  S.wishes.splice(index, 1);
+  saveToDatabase();
+  rWishes();
+}
+
+let D={on:false,start:null,mode:null,prev:new Set(),did:false};
+function dS(e,ds,past){
+  if(past||!S.me){if(!S.me)showToast('請先在最上方點選你的名字（會顯示 YOU） 👆');return;}
+  e.preventDefault();D.on=true;D.did=false;D.start=ds;
+  D.mode=S.dates[S.me].has(ds)?'rm':'add';D.prev=new Set([ds]);uDC();
+}
+function dO(e,ds,past){
+  if(!D.on||past)return;D.did=true;
+  const today=new Date();today.setHours(0,0,0,0);
+  D.prev=new Set(rArr(D.start,ds).filter(d=>new Date(d+'T00:00:00')>=today));uDC();
+}
+function dE(){
+  if(!D.on)return;D.on=false;
+  if(D.prev.size&&S.me){D.prev.forEach(d=>{if(D.mode==='add')S.dates[S.me].add(d);else S.dates[S.me].delete(d);}); saveToDatabase(); }
+  D.prev=new Set();setTimeout(()=>{D.did=false;},50);rAll();
+}
+function uDC(){document.querySelectorAll('.day[data-d]').forEach(el=>{el.classList.remove('dpv-add','dpv-rm');if(D.prev.has(el.dataset.d))el.classList.add(D.mode==='add'?'dpv-add':'dpv-rm');});}
+function tMv(e){e.preventDefault();const t=e.touches[0];const el=document.elementFromPoint(t.clientX,t.clientY)?.closest('.day[data-d]');if(el&&el.dataset.past!=='true')dO(e,el.dataset.d,false);}
+document.addEventListener('mouseup',()=>{if(D.on)dE();});
+
+function rCal(){
+  document.getElementById('mJp').textContent=`${S.vy}年 ${MJP[S.vm-1]}`;
+  document.getElementById('mEn').textContent=MEN[S.vm-1]+' '+S.vy;
+  const today=new Date();today.setHours(0,0,0,0);
+  const fd=new Date(S.vy,S.vm-1,1).getDay(),td=new Date(S.vy,S.vm,0).getDate();
+  const dc={};FR.forEach(f=>S.dates[f.id].forEach(d=>{if(!dc[d])dc[d]=[];dc[d].push(f.id);}));
+  const mySet=S.me?S.dates[S.me]:new Set();
+  let h='';
+  for(let i=0;i<fd;i++)h+='<div class="day empty"></div>';
+  for(let d=1;d<=td;d++){
+    const dt=new Date(S.vy,S.vm-1,d);dt.setHours(0,0,0,0);
+    const past=dt<today;
+    const ds=`${S.vy}-${String(S.vm).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const ids=dc[ds]||[];
+    const heat=ids.length?Math.ceil(ids.length/FR.length*5):0;
+    const cls=['day',past?'past':'',dt.getTime()===today.getTime()?'today':'',ids.length?`h${Math.min(heat,5)}`:'',mySet.has(ds)?'mine':'',D.prev.has(ds)?(D.mode==='add'?'dpv-add':'dpv-rm'):''].filter(Boolean).join(' ');
+    const dots=ids.map(id=>`<div class="fdot" style="background:${gf(id)?.color||'#ccc'}" title="${gf(id)?.name}"></div>`).join('');
+    h+=`<div class="${cls}" data-d="${ds}" data-past="${past}" onmousedown="dS(event,'${ds}',${past})" onmouseover="dO(event,'${ds}',${past})" onmouseup="dE()" ontouchstart="dS(event,'${ds}',${past})" ontouchmove="tMv(event)" ontouchend="dE()"><span class="dn">${d}</span><div class="fdots">${dots}</div></div>`;
+  }
+  document.getElementById('cgrid').innerHTML=h;
+}
+function chM(d){S.vm+=d;if(S.vm>12){S.vm=1;S.vy++;}if(S.vm<1){S.vm=12;S.vy--;}rCal();}
+
+function rBest(){
+  const el=document.getElementById('blist');
+  const dc={}; 
+  FR.forEach(f=>S.dates[f.id].forEach(d=>{ if(!dc[d]) dc[d]=[]; dc[d].push(f.id); }));
+  const allD=Object.keys(dc).sort();
+  if(!allD.length){ el.innerHTML='<div class="empty-s">大家選好日期後，最佳重疊時段自動顯示 🎿</div>'; return; }
+  
+  let windows = [];
+  let curWin = null;
+  
+  for(let i=0; i<allD.length; i++) {
+    const d = allD[i];
+    const people = dc[d];
+    
+    if(!curWin) {
+      curWin = { s: d, e: d, people: new Set(people), minO: people.length };
+    } else {
+      const prevD = new Date(curWin.e + 'T00:00:00');
+      const nextD = new Date(d + 'T00:00:00');
+      const diffDays = Math.round((nextD - prevD)/86400000);
+      const intersect = people.filter(x => curWin.people.has(x));
+      
+      if(diffDays === 1 && intersect.length > 0) {
+        curWin.e = d;
+        people.forEach(p => curWin.people.add(p));
+        if(intersect.length < curWin.minO) {
+          curWin.minO = intersect.length; 
+        }
+      } else {
+        windows.push(curWin);
+        curWin = { s: d, e: d, people: new Set(people), minO: people.length };
+      }
+    }
+  }
+  if(curWin) windows.push(curWin);
+  
+  let filtered = windows.filter(w => w.minO > 1);
+  if(filtered.length === 0) filtered = windows; 
+  
+  filtered.sort((a,b) => {
+    if(b.minO !== a.minO) return b.minO - a.minO;
+    const lenA = Math.round((new Date(a.e) - new Date(a.s))/86400000)+1;
+    const lenB = Math.round((new Date(b.e) - new Date(b.s))/86400000)+1;
+    return lenB - lenA;
+  });
+  
+  const top = filtered.slice(0, 5);
+  if(!top.length || (top.length === 1 && top[0].minO === 0)) {
+    el.innerHTML='<div class="empty-s">目前還沒有共同交集的日期，旅伴們多填幾天試試看！ ⛷</div>';
+    return;
+  }
+  
+  el.innerHTML=top.map((win, i)=>{
+    const days = Math.round((new Date(win.e+'T00:00:00') - new Date(win.s+'T00:00:00'))/86400000)+1;
+    const pct = Math.round(win.minO / FR.length * 100);
+    const arr = rArr(win.s, win.e);
+    
+    const who = [...win.people].map(id => {
+      const f = gf(id);
+      const cnt = arr.filter(d => S.dates[id].has(d)).length;
+      const pt = cnt < days ? `<span style="opacity:.55;font-size:.75em">(${cnt}/${days}天)</span>` : '';
+      return `<span style="color:${f?.color||'#888'};font-weight:700">${f?.name}</span>${pt}`;
+    }).join(' · ');
+    
+    return `<div class="bitem">
+      <div class="brank">${['①','②','③','④','⑤'][i]}</div>
+      <div style="flex:1">
+        <div class="blabel">${fmtP(win.s, win.e)}</div>
+        <div class="bwho" style="margin-top:0.4rem;">參與成員：${who}</div>
+        <div class="bbar-wrap">
+          <div class="bbar-track"><div class="bbar-fill" style="width:${pct}%"></div></div>
+          <div class="bpct">核心共同重疊: ${win.minO}/${FR.length} 人</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function cpLink(){
+  const shareUrl = location.origin + location.pathname;
+  navigator.clipboard.writeText(shareUrl).then(() => {
+    showToast('網址複製成功！發給群組旅伴，點開就是最新同步畫面 🎿');
+  }).catch(()=>{
+    const t=document.createElement('textarea');t.value=shareUrl;
+    document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);
+    showToast('網址已複製！');
+  });
+}
+
+function clrMe(){if(!S.me){showToast('請先點選你的頭像名字');return;}if(!confirm(`確定清除 ${gf(S.me).name} 的所有日期選擇？`))return;S.dates[S.me]=new Set();saveToDatabase();rAll();showToast('已清空你的日期選擇');}
+
+let _tt;
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800);}
+
+function initPetals(){
+  const c=document.getElementById('petals');
+  ['❄','❅','·','✦','❋'].forEach(ch=>{
+    for(let j=0;j<6;j++){
+      const s=document.createElement('div');s.className='petal';s.textContent=ch;
+      s.style.cssText=`left:${Math.random()*100}%;font-size:${.4+Math.random()*.8}rem;animation-duration:${7+Math.random()*12}s;animation-delay:${Math.random()*12}s`;
+      c.appendChild(s);
+    }
+  });
+}
+
+function rAll(){ rFr(); rCal(); rBest(); rWishes(); updateHeroPill(); }
+
+initPetals();
+const savedMe = localStorage.getItem('sk26_me_id');
+if(savedMe && FR.find(f=>f.id===savedMe)) S.me = savedMe;
+
+fetchFromDatabase();
+</script>
+</body>
+</html>
